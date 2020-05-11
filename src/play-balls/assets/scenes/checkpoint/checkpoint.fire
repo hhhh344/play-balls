@@ -58,7 +58,7 @@
     "_groupIndex": 0,
     "groupIndex": 0,
     "autoReleaseAssets": false,
-    "_id": "d801271a-3fa0-4ebc-95b9-5f30f8c38e2e"
+    "_id": "c66eb701-4a85-4ab7-9c6d-5234366f03cd"
   },
   {
     "__type__": "cc.Node",
@@ -171,7 +171,7 @@
       "array": [
         0,
         0,
-        210.61557838561725,
+        208.71212231204973,
         0,
         0,
         0,
@@ -282,6 +282,10 @@
       "__id__": 2
     },
     "_enabled": true,
-    "_id": "26ZMRVcZRLc7hadbvmhGZJ"
+    "ItemPrefab": {
+      "__uuid__": "e672af14-0125-4392-bc10-4551595a521a"
+    },
+    "InitItemCount": 4,
+    "_id": "54DykIb15E+6uJGhOBTgdc"
   }
 ]
