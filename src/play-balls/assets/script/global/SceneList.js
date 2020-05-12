@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-require("../../../creator");
+//require("../../../creator");
 
 cc.Class({
     extends: cc.Component,
@@ -59,12 +59,11 @@ cc.Class({
                 if(!url.startsWith('db://assets/scenes')){
                     continue;
                 }
-
+                //scene位于文件夹名
                 let DirName = cc.path.dirname(url).replace('db://assets/scenes/', '');
                 //获得scene名
                 let SceneName = cc.path.basename(url, '.fire');
 
-                //console.log(SceneName);
 
                 if (!DirName) DirName = '_root';
                 if (!dict[DirName]) {
@@ -78,10 +77,17 @@ cc.Class({
             cc.error('failed to get scene list');
         }
 
+        //得到所有文件夹的名字
         let dirs = Object.keys(dict);
 
         dirs.sort();
 
+        /**
+         * name : xx 
+         * url  : xx
+         *  */
+
+         //将名字和url对应起来
         for(let i = 0; i < dirs.length; i++){
 
             let name = Object.keys(dict[dirs[i]])[0];
@@ -90,25 +96,38 @@ cc.Class({
             this.SceneList.push({name, url});
             
         }
-        //console.log(this.SceneList);
 
-        let y = 150;
-        let x = -400;
+        //左上角第一个button的位置
+        let x = -350;
+        let y = 300;
+
         let InitItemCount = Math.min(this.InitItemCount,this.SceneList.length);
 
         for (let i = 0; i < InitItemCount; ++i) {
-            //console.log(InitItemCount);
-            let item = cc.instantiate(this.ItemPrefab).getComponent('Select_Point_Item');
-            //console.log(item);
+
+            //得到一个scene
             let ItemInfo = this.SceneList[i];
-            //item.init(this.menu);
+
+            //如果不是game就跳过
+            if(!ItemInfo.name.startsWith('game')){
+                continue;
+            }
+
+            //生成一个新的item
+            let item = cc.instantiate(this.ItemPrefab).getComponent('Select_Point_Item');
             this.node.addChild(item.node);
+
+            //一行只存放三个按钮
             if((i + 1) % 4 == 0){
                 y -= 200;
-                x = -400;
+                x = -200;
             }
             x += 200;
-            item.UpdateItem (i,x, y, ItemInfo.name, ItemInfo.url);
+
+            //名字为game_01 最后的两个 即01
+            item.UpdateItem (x, y, ItemInfo.name.slice(-2), ItemInfo.url);
+
+            //将game的按钮push进item列表
             this.ItemList.push(item);
         }
     },

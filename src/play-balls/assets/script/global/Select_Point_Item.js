@@ -13,9 +13,7 @@ cc.Class({
             default: null,
             type: cc.Label
         },
-        url: '',
-        bg: cc.Sprite,
-        btn: cc.Button
+        url: ''
     },
     init () {
         this.index = -1;
@@ -28,15 +26,16 @@ cc.Class({
         }
     },
 
-    UpdateItem (index,x, y, name, url) {
-        let isDir = 0;
-        this.index = index;
+    UpdateItem (x, y, name, url) {
+        //有链接的按钮才显示
+        let isDir = !url;
+        //设置按钮的位置
         this.node.y = y;
         this.node.x = x;
-        this.label.string = this.__name = index;
+
+        //按钮label的名字
+        this.label.string = name;
         this.url = url;
-        this.bg.enabled = !isDir;
-        this.btn.interactable = !isDir;
     }
  
 });
