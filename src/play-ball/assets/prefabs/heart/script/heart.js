@@ -33,7 +33,7 @@ cc.Class({
         if(com.data == 1) {
             cc.audioEngine.playEffect(this.collideAudio);
         }
-        const otherScript =  other.getComponent(this.otherBallScript);
+        const otherScript =  other.node.getComponent(this.otherBallScript);
         otherScript.xSpeed = 0;
         otherScript.ySpeed = 0;
         console.log('win');
