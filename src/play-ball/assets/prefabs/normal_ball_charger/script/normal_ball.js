@@ -51,15 +51,15 @@ cc.Class({
         const canvas = this.node.parent.getComponent('charge_bar').Canvas;
         if(Math.abs(this.node.x) + this.node.width/2 >= canvas.width/2) {
             this.xSpeed = -this.xSpeed;
-            if(com.data == 1) {
-                cc.audioEngine.playEffect(this.collideAudio);
-            }
+            // if(com.data == 1) {
+            //     cc.audioEngine.playEffect(this.collideAudio);
+            // }
         }
         if(Math.abs(this.node.y) + this.node.height/2 >= canvas.height/2) {
             this.ySpeed = -this.ySpeed;
-            if(com.data == 1) {
-                cc.audioEngine.playEffect(this.collideAudio);
-            }
+            // if(com.data == 1) {
+            //     cc.audioEngine.playEffect(this.collideAudio);
+            // }
         }
 
         // this.xSpeed = this.accel * this.xSpeed;
