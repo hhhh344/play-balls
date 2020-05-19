@@ -99,7 +99,7 @@ cc.Class({
 
         //左上角第一个button的位置
         let x = -350;
-        let y = 300;
+        let y = 280;
 
         let InitItemCount = Math.min(this.InitItemCount,this.SceneList.length);
 
