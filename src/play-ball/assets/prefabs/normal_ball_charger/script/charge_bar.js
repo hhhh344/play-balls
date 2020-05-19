@@ -131,7 +131,7 @@ cc.Class({
 
     },
 
-    update (dt) {
-        console.log(com.mouse);
-    },
+    // update (dt) {
+    //     
+    // },
 });
