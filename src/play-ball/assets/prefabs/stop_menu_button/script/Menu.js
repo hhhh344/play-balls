@@ -4,7 +4,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
+var com = require('common');
 cc.Class({
     extends: cc.Component,
 
@@ -31,6 +31,8 @@ cc.Class({
     },
 
     buttonStop:function(){
+        //禁止调用鼠标事件
+        com.mouse = -1;
         cc.director.pause();
 
     },
@@ -39,12 +41,16 @@ cc.Class({
         //前面打开了菜单 现在要关闭菜单       
         this.menu.active = false;        
         cc.director.resume();
+        //恢复调用鼠标事件
+        com.mouse = 1;  
     },
 
     restart : function(){
         //前面打开了菜单 现在要关闭菜单       
         this.menu.active = false;
         cc.director.resume();
+        //恢复调用鼠标事件
+        com.mouse = 1; 
         cc.director.loadScene(this.currentSceneName);  
         
     },
@@ -52,6 +58,8 @@ cc.Class({
         //前面打开了菜单 现在要关闭菜单       
         this.menu.active = false;
         cc.director.resume();
+        //恢复调用鼠标事件
+        com.mouse = 1; 
         cc.director.loadScene(this.homeSceneName);  
         
     },
