@@ -1,3 +1,4 @@
+var com = require('common');
 cc.Class({
     extends: cc.Component,
     properties: {
@@ -29,6 +30,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        
         const player = this.player;
         const playerScript = player.getComponent('normal_ball');
         const maxSpeed = playerScript.maxMoveSpeed;
@@ -55,7 +57,7 @@ cc.Class({
         [border.x, border.y] = [player.x, player.y];
 
         canvas.on(cc.Node.EventType.TOUCH_START, e => {
-            if(playerScript.xSpeed == 0 && playerScript.ySpeed == 0) {
+            if(playerScript.xSpeed == 0 && playerScript.ySpeed == 0 && com.mouse == 1) {
                 border.opacity = 255;
 
                 [vecX, vecY] = 
@@ -84,7 +86,7 @@ cc.Class({
         });
 
         canvas.on(cc.Node.EventType.TOUCH_MOVE, e => {
-            if(playerScript.xSpeed == 0 && playerScript.ySpeed == 0) {
+            if(playerScript.xSpeed == 0 && playerScript.ySpeed == 0 && com.mouse == 1) {
                 [vecX, vecY] = 
                 [player.x + canvas.width/2 - e.getLocationX(), player.y + canvas.height/2 - e.getLocationY()];
                 vecLength = Math.sqrt(vecX**2 + vecY**2);
@@ -111,7 +113,7 @@ cc.Class({
         });
 
         canvas.on(cc.Node.EventType.TOUCH_END, e => {
-            if(playerScript.xSpeed == 0 && playerScript.ySpeed == 0) {
+            if(playerScript.xSpeed == 0 && playerScript.ySpeed == 0 && com.mouse == 1) {
                 border.opacity = 0;
                 const deltaSpeed = maxSpeed - minSpeed;
                 const cosTheta = vecX/vecLength;
@@ -123,7 +125,6 @@ cc.Class({
                 }
             }
         })
-
     },
 
     start () {
@@ -131,5 +132,6 @@ cc.Class({
     },
 
     // update (dt) {
+    //     
     // },
 });
