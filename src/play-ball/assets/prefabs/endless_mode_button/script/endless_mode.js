@@ -35,7 +35,7 @@ cc.Class({
     },
 
     LoadEndless () {
-        cc.director.loadScene('main');
+        cc.director.loadScene('endless_game');
     }
 
     // update (dt) {},
