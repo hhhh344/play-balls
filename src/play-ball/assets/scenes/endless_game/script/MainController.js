@@ -102,7 +102,7 @@ var MainController = cc.Class({
         //let ball = cc.instantiate(this.prefabBall).getComponent(Ball);
         //ball.node.parent = this.node;
         //ball.node.position = pos;
-        //ball.main = this;
+        ball.main = this;
         //ball.node.group = Config.groupBallInGame;
         //this.balls.push(ball);
         //this.setBallCount(this.balls.length);
