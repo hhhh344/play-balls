@@ -1,9 +1,5 @@
-// Learn cc.Class:
-//  - https://docs.cocos.com/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
+
+var EndBall = require("../prefabs/ball/script/EndBall");
 
 var MainController = cc.Class({
     extends: cc.Component,
@@ -38,8 +34,18 @@ var MainController = cc.Class({
         labelBallNum:{
             type:cc.Label,
             default:null
-        }
+        },
+        
+        //瞄准
+        takeAim:{
+            type:cc.Node,
+            default:null
+        },
 
+        balls:{
+            type:EndBall,
+            default:[]
+        }
 
 
     },
@@ -82,13 +88,14 @@ var MainController = cc.Class({
          /*
         if (!this.isRecycleFinished()) {
             return;
-        }
-        let graphics = this.node.getChildByName("take-aim").getComponent(cc.Graphics);
+        }*/
+        let graphics = this.node.getChildByName("take_aim").getComponent(cc.Graphics);
         graphics.clear();
-        this.recycleBallsCount = 0;
+        //this.recycleBallsCount = 0;
         let touchPos = this.node.convertTouchToNodeSpaceAR(touch.touch);
-        this.shootBalls(touchPos.sub(cc.v2(0, 420)));
-        */
+        this.shootBalls(touchPos.sub(cc.v2(0, 330)));
+        
+    
     },
      //新增小球
      addBall(pos) {
@@ -100,6 +107,41 @@ var MainController = cc.Class({
         //this.balls.push(ball);
         //this.setBallCount(this.balls.length);
     },
+
+    //连续发射小球
+    shootBalls(dir) {
+        /*
+        if (!this.gameStatus) {
+            return;
+        }*/
+        for (let i = 0; i < this.balls.length; i++) {
+            let ball = this.balls[i];
+            this.scheduleOnce(function () {
+                this.shootBall(ball, dir);
+            }.bind(this), i * 0.2)
+        }
+    },
+
+     //发射单个小球
+    shootBall(ball, dir) {
+        ball.rigidBody.active = false;
+        let pathPos = [];
+
+        //push进小球的初始位置
+        pathPos.push(ball.node.position);
+        pathPos.push(cc.v2(0, 330));
+
+        ball.node.runAction(cc.sequence(
+            //先移动到pathPos的位置
+            cc.cardinalSplineTo(0.8, pathPos, 0.5),
+            //再按照dir向量移动到touch的位置
+            cc.callFunc(function () {
+                ball.rigidBody.active = true;
+                ball.rigidBody.linearVelocity = dir.mul(3);
+            })
+        ))
+    },
+
     //显示小球总数
     setBallCount(num){
         this.labelBallNum.string = '小球数：' + num.toString();
