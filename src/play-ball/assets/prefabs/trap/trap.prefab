@@ -442,6 +442,8 @@
       "__id__": 1
     },
     "_enabled": true,
+    "circle_transition": null,
+    "ball": null,
     "nextSceneName": "game_01",
     "otherBallScript": "normal_ball",
     "_id": ""
@@ -452,9 +454,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "4ff724f3-d358-4434-8bdd-c1be4e14f118"
+      "__id__": 0
     },
-    "fileId": "04jkP5iSlFvYhkhDZ/dikq",
+    "fileId": "ear8KhrudNB60a2Q0Js1c5",
     "sync": false
   }
 ]
