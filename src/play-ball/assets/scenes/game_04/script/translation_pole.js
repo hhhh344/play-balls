@@ -28,15 +28,17 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
+    onLoad () {
+        this.rigidBody = this.node.getComponent(cc.RigidBody);
+    },
 
     start () {
 
     },
 
-    LoadEndless () {
-        cc.director.loadScene('endless_game');
-    }
-
-    // update (dt) {},
+    update (dt) {
+        if (Math.abs(this.node.x) + this.node.width/2 >= this.node.parent.width/2){
+            this.rigidBody.linearVelocity = this.rigidBody.linearVelocity.negSelf();
+        }
+    },
 });

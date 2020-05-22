@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "about",
+    "_name": "translation_pole",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -27,10 +27,13 @@
       },
       {
         "__id__": 4
+      },
+      {
+        "__id__": 5
       }
     ],
     "_prefab": {
-      "__id__": 5
+      "__id__": 6
     },
     "_opacity": 255,
     "_color": {
@@ -42,8 +45,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 243,
-      "height": 62
+      "width": 150,
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -55,7 +58,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -100,
+        50,
         0,
         0,
         0,
@@ -63,7 +66,7 @@
         1,
         1,
         1,
-        0
+        1
       ]
     },
     "_eulerAngles": {
@@ -95,7 +98,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "54607058-8373-45d7-8921-e2643133612c"
+      "__uuid__": "ca0369f8-c07e-448b-8914-2dc81d482ca0"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -112,91 +115,64 @@
     "_id": ""
   },
   {
-    "__type__": "9c3c35dDZBGjrKPgYbaJChJ",
+    "__type__": "cc.RigidBody",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
+    "_type": 1,
+    "_allowSleep": true,
+    "_gravityScale": 0,
+    "_linearDamping": 0,
+    "_angularDamping": 0,
+    "_linearVelocity": {
+      "__type__": "cc.Vec2",
+      "x": 150,
+      "y": 0
+    },
+    "_angularVelocity": 0,
+    "_fixedRotation": true,
+    "enabledContactListener": false,
+    "bullet": false,
+    "awakeOnLoad": true,
     "_id": ""
   },
   {
-    "__type__": "cc.Button",
+    "__type__": "cc.PhysicsBoxCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
-    "_normalMaterial": {
-      "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+    "tag": 0,
+    "_density": 1,
+    "_sensor": false,
+    "_friction": 0,
+    "_restitution": 1,
+    "body": null,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
     },
-    "_grayMaterial": null,
-    "duration": 0.1,
-    "zoomScale": 1.2,
-    "clickEvents": [],
-    "_N$interactable": true,
-    "_N$enableAutoGrayEffect": false,
-    "_N$transition": 2,
-    "transition": 2,
-    "_N$normalColor": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 150,
+      "height": 30
     },
-    "_N$pressedColor": {
-      "__type__": "cc.Color",
-      "r": 211,
-      "g": 211,
-      "b": 211,
-      "a": 255
-    },
-    "pressedColor": {
-      "__type__": "cc.Color",
-      "r": 211,
-      "g": 211,
-      "b": 211,
-      "a": 255
-    },
-    "_N$hoverColor": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "hoverColor": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_N$disabledColor": {
-      "__type__": "cc.Color",
-      "r": 124,
-      "g": 124,
-      "b": 124,
-      "a": 255
-    },
-    "_N$normalSprite": {
-      "__uuid__": "54607058-8373-45d7-8921-e2643133612c"
-    },
-    "_N$pressedSprite": {
-      "__uuid__": "5f6056df-20bc-401a-950f-336ed3be8025"
-    },
-    "pressedSprite": {
-      "__uuid__": "5f6056df-20bc-401a-950f-336ed3be8025"
-    },
-    "_N$hoverSprite": null,
-    "hoverSprite": null,
-    "_N$disabledSprite": null,
-    "_N$target": {
+    "_id": ""
+  },
+  {
+    "__type__": "02984cCcqZMMo+GjbYvlQtB",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
       "__id__": 1
     },
+    "_enabled": true,
     "_id": ""
   },
   {
@@ -205,9 +181,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "de984021-bb01-4743-a2d1-0e262457203b"
+      "__uuid__": "f6c0ca59-c605-4da7-bbbd-0b3950c4ac3c"
     },
-    "fileId": "11sOAmXzNLlLZYu19FY+ws",
+    "fileId": "4f8gsds1hBzoc58OX1XHrv",
     "sync": false
   }
 ]

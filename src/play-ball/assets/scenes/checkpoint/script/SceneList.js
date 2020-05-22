@@ -32,6 +32,9 @@ cc.Class({
 
         //加载两个list
         this.initList();
+
+        //加载game按钮
+        this.initItem();
     },
 
     onLoad(){
@@ -93,12 +96,24 @@ cc.Class({
             let name = Object.keys(dict[dirs[i]])[0];
             let url = dict[dirs[i]][name];
 
+            console.log(name);
+            //如果不是game就跳过
+            if(!name.startsWith('game')){
+                continue;
+            }
+
+
             this.SceneList.push({name, url});
             
         }
 
+      
+    },
+
+    //生成按钮
+    initItem(){
         //左上角第一个button的位置
-        let x = -350;
+        let x = -300;
         let y = 280;
 
         let InitItemCount = Math.min(this.InitItemCount,this.SceneList.length);
@@ -108,21 +123,17 @@ cc.Class({
             //得到一个scene
             let ItemInfo = this.SceneList[i];
 
-            //如果不是game就跳过
-            if(!ItemInfo.name.startsWith('game')){
-                continue;
-            }
-
+        
             //生成一个新的item
             let item = cc.instantiate(this.ItemPrefab).getComponent('Select_Point_Item');
             this.node.addChild(item.node);
 
             //一行只存放三个按钮
             if((i + 1) % 4 == 0){
-                y -= 200;
-                x = -200;
+                y -= 150;
+                x = -300;
             }
-            x += 200;
+            x += 150;
 
             //名字为game_01 最后的两个 即01
             item.UpdateItem (x, y, ItemInfo.name.slice(-2), ItemInfo.url);
