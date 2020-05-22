@@ -9,30 +9,19 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        nextSceneName: {
-            default: 'game_01',
-        },
-
-        otherBallScript: {
-            default: 'normal_ball'
-        }
+        
     },
 
     // LIFE-CYCLE CALLBACKS:
 
-    onLoad () {
-        let manager = cc.director.getCollisionManager();
-        manager.enabled = true;
-        // manager.enabledDebugDraw = true;
-    },
+     onLoad () {
+        this.scheduleOnce(function() {
+            cc.director.loadScene('main');
+        }, 0.5);
+     },
 
     start () {
 
-    },
-
-    onCollisionEnter: function(other, self) {
-        console.log('fail');
-        cc.director.loadScene(this.nextSceneName);
     },
 
     // update (dt) {},
