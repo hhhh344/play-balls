@@ -43,6 +43,17 @@ cc.Class({
         }
     },
 
+    onEndContact: function(contact, selfCollider, otherCollider) {
+        console.log('contact');
+        //限速, 小于最小值时添加重力
+        if(this.rigidBody.linearVelocity.mag() < this.minSpeed * 50) {
+            this.rigidBody.gravityScale = 1;
+        }
+        if(this.rigidBody.linearVelocity.mag() > this.maxSpeed * 50) {
+            this.rigidBody.linearVelocity = this.rigidBody.linearVelocity.normalize().mulSelf(50 * this.maxSpeed);
+        } 
+    },
+
     collideWall () {
         const canvas = this.node.parent.getComponent('charge_bar').Canvas;
         if(Math.abs(this.node.x) + this.node.width/2 >= canvas.width/2) {

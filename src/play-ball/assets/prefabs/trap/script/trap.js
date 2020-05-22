@@ -54,7 +54,7 @@ cc.Class({
         this.circle_transition.y=this.ball.y;
         this.circle_transition.active=true;
         cc.tween(this.circle_transition)
-        .to(1, { scale: 2.5 })
+        .to(.5, { scale: 2.5 })
         .start()
              
     },

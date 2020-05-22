@@ -82,7 +82,7 @@ cc.Class({
         this.circle_transition.active=true;
         this.circle_transition.scale=0.1;
         cc.tween(this.circle_transition)
-        .to(1, { scale: 2.74 })
+        .to(.5, { scale: 2.74 })
         .start()
              
     },
@@ -91,11 +91,11 @@ cc.Class({
         this.circle_transition.x=this.ball.x;
         this.circle_transition.y=this.ball.y;
         cc.tween(this.circle_transition)
-        .to(1, { scale: 0.1 })
+        .to(.5, { scale: 0.1 })
         .start()
                 this.scheduleOnce(function() {
             this.circle_transition.active=false;
-                    },1);
+                    },.5);
     },
     close_the_reddoor:function(){
         this.circle_red.x=this.ball.x;
@@ -103,11 +103,11 @@ cc.Class({
         this.circle_red.scale = 2.5;
         this.circle_red.active=true;
         cc.tween(this.circle_red)
-        .to(1, { scale: 0.1 })
+        .to(.5, { scale: 0.1 })
         .start()
                 this.scheduleOnce(function() {
             this.circle_red.active=false;
-                    },1);
+                    },.5);
     },
     // close_the_door:function(){
     //     com.transition = -com.transition;
