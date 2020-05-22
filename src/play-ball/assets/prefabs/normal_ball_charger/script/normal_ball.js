@@ -71,6 +71,5 @@ cc.Class({
     },
 
     update () {
-        this.collideWall();
     }
 });
