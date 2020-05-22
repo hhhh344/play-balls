@@ -1,4 +1,4 @@
-
+var com = require('common');
 cc.Class({
     extends: cc.Component,
 
@@ -9,6 +9,11 @@ cc.Class({
 
         otherBallScript: {
             default: 'normal_ball'
+        },
+        
+        collideAudio: {
+            default: null,
+            type: cc.AudioClip
         }
     },
 
@@ -25,9 +30,9 @@ cc.Class({
     },
 
     onCollisionEnter: function(other, self) {
-        const otherScript =  other.getComponent(this.otherBallScript);
-        otherScript.xSpeed = 0;
-        otherScript.ySpeed = 0;
+        if(com.data == 1) {
+            cc.audioEngine.playEffect(this.collideAudio);
+        }
         console.log('win');
         cc.director.loadScene(this.nextSceneName);
     },
