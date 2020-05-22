@@ -60,6 +60,7 @@ cc.Class({
         cc.director.resume();
         //恢复调用鼠标事件
         com.mouse = 1; 
+        com.result = 1;
         cc.director.loadScene(this.homeSceneName);  
         
     },
