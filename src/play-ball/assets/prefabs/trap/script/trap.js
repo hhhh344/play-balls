@@ -31,10 +31,6 @@ cc.Class({
     },
 
     onCollisionEnter: function(other, self) {
-        const otherScript =  other.getComponent(this.otherBallScript);
-        otherScript.xSpeed = 0;
-        otherScript.ySpeed = 0;
-        console.log(otherScript.xSpeed);
         console.log('fail');
         cc.director.loadScene(this.nextSceneName);
     },

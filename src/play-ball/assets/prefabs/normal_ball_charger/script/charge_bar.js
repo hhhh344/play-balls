@@ -30,108 +30,94 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        
-        const player = this.player;
-        const playerScript = player.getComponent('normal_ball');
-        const maxSpeed = playerScript.maxMoveSpeed;
-        const minSpeed = playerScript.minMoveSpeed;
-        const canvas = this.Canvas;
-        const border = this.border;
-        const rect = this.rectangle;
-        const rectHeight = rect.height;
+        this.ballRigidBody = this.player.getComponent(cc.RigidBody);
+        this.ballScript = this.player.getComponent('normal_ball');
+        this.maxSpeed = this.ballScript.maxSpeed;
+        this.minSpeed = this.ballScript.minSpeed;
+        //设置蓄力条透明，位置在小球上
+        this.border.opacity = 0;
+        [this.border.x, this.border.y] = [this.player.x, this.player.y];
 
-        //rectangle的高度与原高度之比小于该值，则取消发射小球
-        const cancelRatio = 0.2;
+        //蓄力条长度
+        this.rectHeight = this.rectangle.height;
 
         //鼠标与小球的距离≥maxDistance时，蓄力条满
-        const maxDistance = 150;
+        this.maxDistance = 150;
 
         //rectangle的高度与原高度之比
-        let ratio = 0;
+        this.ratio = 0;
 
-        //蓄力条向量
-        let [vecX, vecY, vecLength] = [0, 0, 0];
+        //rectangle的高度与原高度之比小于该值，则取消发射小球
+        this.cancelRatio = 0.2;
 
-        //设置蓄力条透明，位置在小球上
-        border.opacity = 0;
-        [border.x, border.y] = [player.x, player.y];
-
-        canvas.on(cc.Node.EventType.TOUCH_START, e => {
-            if(playerScript.xSpeed == 0 && playerScript.ySpeed == 0 && com.mouse == 1) {
-                border.opacity = 255;
-
-                [vecX, vecY] = 
-                [player.x + canvas.width/2 - e.getLocationX(), player.y + canvas.height/2 - e.getLocationY()];
-                vecLength = Math.sqrt(vecX**2 + vecY**2);
-                
-                //蓄力条角度控制
-                let theta = 360 * Math.atan(vecX/vecY)/(2*Math.PI);
-                if(vecY < 0) {
-                    theta += 180;
-                }
-                border.angle = -theta;
-
-                //蓄力条长度控制
-                ratio = vecLength/maxDistance;
-                if(ratio <= cancelRatio) {
-                    rect.height = 0;
-                }
-                else if(ratio < 1) {
-                    rect.height = ratio * rectHeight;
-                }
-                else {
-                    rect.height = rectHeight;
-                }
+        this.Canvas.on(cc.Node.EventType.TOUCH_START, e => {
+            if(this.ballRigidBody.linearVelocity.mag() === 0 && com.mouse === 1) {
+                this.border.opacity = 255;
+                this.calculateChargeBar(e);
+                this.chargeBarChange();
             }
         });
 
-        canvas.on(cc.Node.EventType.TOUCH_MOVE, e => {
-            if(playerScript.xSpeed == 0 && playerScript.ySpeed == 0 && com.mouse == 1) {
-                [vecX, vecY] = 
-                [player.x + canvas.width/2 - e.getLocationX(), player.y + canvas.height/2 - e.getLocationY()];
-                vecLength = Math.sqrt(vecX**2 + vecY**2);
-                
-                //蓄力条角度控制
-                let theta = 360 * Math.atan(vecX/vecY)/(2*Math.PI);
-                if(vecY < 0) {
-                    theta += 180;
-                }
-                border.angle = -theta;
-
-                //蓄力条长度控制
-                ratio = vecLength/maxDistance;
-                if(ratio <= cancelRatio) {
-                    rect.height = 0;
-                }
-                else if(ratio < 1) {
-                    rect.height = ratio * rectHeight;
-                }
-                else {
-                    rect.height = rectHeight;
-                }
+        this.Canvas.on(cc.Node.EventType.TOUCH_MOVE, e => {
+            if(this.ballRigidBody.linearVelocity.mag() === 0 && com.mouse === 1) {
+                this.calculateChargeBar(e);
+                this.chargeBarChange();
             }
         });
 
-        canvas.on(cc.Node.EventType.TOUCH_END, e => {
-            if(playerScript.xSpeed == 0 && playerScript.ySpeed == 0 && com.mouse == 1) {
-                border.opacity = 0;
-                const deltaSpeed = maxSpeed - minSpeed;
-                const cosTheta = vecX/vecLength;
-                const sinTheta = vecY/vecLength;
-                const speed = ratio * deltaSpeed + minSpeed;
-                if(ratio > cancelRatio) {
-                    [playerScript.xSpeed, playerScript.ySpeed] = 
-                    [cosTheta * speed, sinTheta * speed];
-                }
+        this.Canvas.on(cc.Node.EventType.TOUCH_END, e => {
+            if(this.ballRigidBody.linearVelocity.mag() === 0 && com.mouse === 1) {
+                this.border.opacity = 0;
+                this.launch();
             }
         })
+    },
+
+    //根据鼠标位置和球心计算向量
+    calculateChargeBar (e) {
+        let vx = this.player.x + this.Canvas.width/2 - e.getLocationX();
+        let vy = this.player.y + this.Canvas.height/2 - e.getLocationY();
+        this.vBall = cc.v2(vx, vy);
+    },
+
+    chargeBarChange () {
+        //角度控制
+        let theta = 360 * Math.atan(this.vBall.x/this.vBall.y)/(2*Math.PI);
+        if(this.vBall.y < 0) {
+            theta += 180;
+        }
+        this.border.angle = -theta;
+
+        //长度控制
+        this.ratio = this.vBall.mag()/this.maxDistance;
+        if(this.ratio <= this.cancelRatio) {
+            this.rectangle.height = 0;
+        }
+        else if(this.ratio < 1) {
+            this.rectangle.height = this.ratio * this.rectHeight;
+        }
+        else {
+            this.rectangle.height = this.rectHeight;
+        }
+    },
+
+    //发射小球
+    launch () {
+        if(this.ratio > this.cancelRatio) {
+            if(this.ratio > 1) {
+                this.ratio = 1;
+            }
+            const deltaSpeed = this.maxSpeed - this.minSpeed;
+            const speed = this.ratio * deltaSpeed + this.minSpeed;
+            this.ballRigidBody.linearVelocity = this.vBall.normalize().mulSelf(50*speed);
+        }
     },
 
     start () {
 
     },
 
-    // update (dt) {
-    //     
-    // },
+    update (dt) {
+        
+    },
 });
