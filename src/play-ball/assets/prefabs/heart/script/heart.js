@@ -14,7 +14,16 @@ cc.Class({
         collideAudio: {
             default: null,
             type: cc.AudioClip
-        }
+        },
+
+        upperCurtain: {
+            default: null,
+            type: cc.Node
+        },
+        lowerCurtain: {
+            default: null,
+            type: cc.Node
+        },
     },
 
 
@@ -23,6 +32,9 @@ cc.Class({
     onLoad () {
         let manager = cc.director.getCollisionManager();
         manager.enabled = true;
+        this.scheduleOnce(function() {
+            this.open_the_door();
+        }, 0.1);
     },
 
     start () {
@@ -34,8 +46,39 @@ cc.Class({
             cc.audioEngine.playEffect(this.collideAudio);
         }
         console.log('win');
-        cc.director.loadScene(this.nextSceneName);
+        this.close_the_door();
+
+        this.scheduleOnce(function() {
+            cc.director.loadScene(this.nextSceneName);
+        }, 0.5);
+    },
+    
+    close_the_door:function(){
+        com.transition = -com.transition;
+        var win_size = cc.director.getWinSize();
+        
+        var m1 = cc.moveBy(0.5,0,3504);
+       
+        this.lowerCurtain.runAction(m1);
+      
+        var m2 = cc.moveBy(0.5,0,-3504);
+
+        this.upperCurtain.runAction(m2);
+        cc.log('close_the_door');
     },
 
+    open_the_door:function(){
+            com.transition = -com.transition;
+            var win_size = cc.director.getWinSize();
+            
+            var m1 = cc.moveBy(0.5,0,-3504);
+           
+            this.lowerCurtain.runAction(m1);
+          
+            var m2 = cc.moveBy(0.5,0,3504);
+    
+            this.upperCurtain.runAction(m2);
+            cc.log('open_the_door');
+    },
     update (dt) {},
 });
