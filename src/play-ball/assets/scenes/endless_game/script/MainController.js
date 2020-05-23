@@ -1,6 +1,7 @@
 
 var EndBall = require("../prefabs/ball/script/EndBall");
 var Barrier = require("../prefabs/barrier/script/barrier");
+require("./shake");
 
 var MainController = cc.Class({
     extends: cc.Component,
@@ -60,6 +61,9 @@ var MainController = cc.Class({
 
         //启用物理世界
         cc.director.getPhysicsManager().enabled = true;
+
+        // 开启碰撞检测系统
+        cc.director.getCollisionManager().enabled = true;
         cc.director.getActionManager().gravity = cc.v2(0, -1000); //设置重力
         
          //事件监听
@@ -81,6 +85,13 @@ var MainController = cc.Class({
 
         this.guidePlay.active = false;
 
+        this.balls[0].main = this;
+
+        //设置障碍物的基本分
+        this.barrierScoreRate  = 0;
+
+        this.recycleBallsCount = 0;
+
     },
 
     //触摸开始时
@@ -98,6 +109,9 @@ var MainController = cc.Class({
         //发射
         let touchPos = this.node.convertTouchToNodeSpaceAR(touch.touch);
         this.shootBalls(touchPos.sub(this.origin_site));
+
+        //将回收的球置零
+        this.recycleBallsCount = 0;
         
     
     },
@@ -160,6 +174,12 @@ var MainController = cc.Class({
         }
     },
 
+    //获取随机距离，用于生成障碍物的间距
+    getRandomSpace() {
+        return 80 + Math.random() * 100;
+    },
+
+
     //消除障碍物
     removeBarrier(barrier) {
         let idx = this.barriers.indexOf(barrier);
@@ -169,11 +189,56 @@ var MainController = cc.Class({
         }
     },
 
-    //获取随机距离，用于生成障碍物的间距
-    getRandomSpace() {
-        return 80 + Math.random() * 100;
+    //抖动障碍物
+    shake(barrier) {
+        let shake = cc.shake(0.7, 1, 1);
+        barrier.node.runAction(shake);
     },
 
+    //设置障碍物自身分数值
+    setBarrierScore() {
+        let score = Math.floor(this.randomNum(1 + 2 * this.barrierScoreRate, 5 + 3 * this.barrierScoreRate));
+        return score;
+    },
+
+    //获取区间随机值
+    randomNum(Min, Max) {
+        var Range = Max - Min;
+        var Rand = Math.random();
+        var num = Min + Math.floor(Rand * Range);
+        return num;
+    },
+
+    //收回小球，上移一排障碍物
+    recycleBall() {
+        //已经回收ball的数量
+        this.recycleBallsCount++;
+        //this.barrierScoreRate += 0.1;
+
+        if (this.isRecycleFinished()) {
+            for (let i = 0; i < this.barriers.length; i++) {
+                let barrier = this.barriers[i];
+                barrier.node.runAction(cc.sequence(
+                    cc.moveBy(0.5, cc.v2(0, 100)),
+                    cc.callFunc(function () {
+                        if (barrier.node.position.y > 200) {
+                            barrier.node.runAction(cc.shake(1.5, 3, 3));
+                        }
+                        if (barrier.node.position.y > 300) {
+                            cc.loadScene('endless_main');
+                        }
+                    }.bind(this))
+                ))
+            }
+            this.addBarriers();
+        }
+    },
+
+    //小球是否收回完毕
+    isRecycleFinished() {
+        return this.recycleBallsCount == this.balls.length;
+    },
+ 
 
     //显示引导动画
     guideShow() {

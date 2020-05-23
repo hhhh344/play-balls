@@ -14,8 +14,8 @@ var Barrier = cc.Class({
         if (this.lbScore) {
             this.lbScore.node.rotation = -this.node.rotation
         }*/
-        this.setScore(6);
-        //this.setScore(this.main.setBarrierScore());
+        //this.setScore(6);
+        this.setScore(this.main.setBarrierScore());
         //this.node.color = cc.color(200, this.randomNum(0, 255), this.randomNum(0, 255), 255)
 
     },
@@ -37,18 +37,19 @@ var Barrier = cc.Class({
 
     //发生碰撞时
     onBeginContact(contact, selfCollider, otherCollider) {
+        this.main.shake(this);
         if (this.isAddBuffBall) {
             //this.main.addBall(this.node.position);
             //this.main.removeBarrier(this);
         } else {
-            this.main.addScore();
+            //this.main.addScore();
             if (this.score == 1) {
                 //this.main.removeBarrier(this);
             } else {
-                this.setScore(this.score - 1);
-               //this.main.shake(this);
+                //this.setScore(this.score - 1);
+               //
             }
-
+           
         }
     }
 });
