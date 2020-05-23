@@ -195,7 +195,7 @@
       "array": [
         0,
         0,
-        283.1617682955266,
+        268.7709893503001,
         0,
         0,
         0,
@@ -257,7 +257,7 @@
   {
     "__type__": "cc.Node",
     "_name": "canvas_border",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 2
     },
@@ -1987,7 +1987,7 @@
   {
     "__type__": "cc.Node",
     "_name": "translation_pole",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 2
     },
@@ -2132,7 +2132,7 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 150,
+      "width": 200,
       "height": 30
     },
     "_id": "34dYKNX4RKQrnSamgAdTEr"
@@ -2594,7 +2594,7 @@
   {
     "__type__": "cc.Node",
     "_name": "circle_lose",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 2
     },
@@ -2881,7 +2881,7 @@
   {
     "__type__": "cc.Node",
     "_name": "circle_ball",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 2
     },
