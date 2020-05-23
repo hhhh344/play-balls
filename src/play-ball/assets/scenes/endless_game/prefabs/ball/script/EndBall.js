@@ -1,3 +1,5 @@
+var com = require('../../../../common');
+var Config = require('../../../script/config');
 var EndBall = cc.Class({
     
     extends: cc.Component,
@@ -9,6 +11,10 @@ var EndBall = cc.Class({
             default: null
         },
 
+        collideAudio: {
+            default: null,
+            type: cc.AudioClip
+        },
         //是否碰到了地面
         isTouchedGround: false
     },
@@ -43,15 +49,17 @@ var EndBall = cc.Class({
                 pathPos.push(cc.v2(-250, 420));
                 pathPos.push(cc.v2(0, 350));
             }
-           
             // 回收小球
             this.node.runAction(cc.sequence(
                 cc.cardinalSplineTo(1, pathPos, 0.9),
                 cc.callFunc(function () {
                     this.rigidBody.active = true;
                     this.main.recycleBall();
+                   
                 }.bind(this))
             ))
+            this.node.group = Config.groupBallInGame;
+            console.log(this.node.group);
             this.isTouchedGround = false;
         }
 
@@ -59,9 +67,14 @@ var EndBall = cc.Class({
     
     //小球发生碰撞时
     onBeginContact(contact, selfCollider, otherCollider) {
+        if(com.data === 1) {
+            cc.audioEngine.playEffect(this.collideAudio);
+        }
         //console.log('xxx');
         if (otherCollider.node.name == 'ground') {
             this.isTouchedGround = true;
+           // this.rigidBody.active = false;
+           
         }
     }
 });

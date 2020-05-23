@@ -1,6 +1,6 @@
-
 var EndBall = require("../prefabs/ball/script/EndBall");
 var Barrier = require("../prefabs/barrier/script/barrier");
+var Config  = require("../script/config")
 require("./shake");
 
 var MainController = cc.Class({
@@ -79,11 +79,14 @@ var MainController = cc.Class({
         this.score = 0; 
 
         //小球从圆圈出来到这个位置，再进行发射
-        this.origin_site = cc.v2(0,310);
+        this.origin_site = cc.v2(0,320);
 
         this.guidePlay.active = false;
 
         this.balls[0].main = this;
+
+        //初始化为recycle分组
+        this.balls[0].node.group = Config.groupBallInRecycle;
 
         //设置障碍物的基本分
         this.barrierScoreRate  = 0;
@@ -132,20 +135,21 @@ var MainController = cc.Class({
     shootBall(ball, dir) {
         ball.rigidBody.active = false;
         let pathPos = [];
-
+       
         //push进小球的初始位置,先移动初始位置
         pathPos.push(ball.node.position);
         pathPos.push(this.origin_site);
-
+        ball.node.group = Config.groupBallInRecycle;
         ball.node.runAction(cc.sequence(
 
             //先移动到pathPos的位置
-            cc.cardinalSplineTo(0.8, pathPos, 0.5),
+            cc.cardinalSplineTo(0, pathPos, 0.5),
 
             //再按照dir向量移动到touch的位置
             cc.callFunc(function () {
                 ball.rigidBody.active = true;
                 ball.rigidBody.linearVelocity = dir.mul(3);
+               
             })
         ))
     },
@@ -156,6 +160,7 @@ var MainController = cc.Class({
         ball.node.parent = this.node;
         ball.node.position = pos;
         ball.main = this;
+        ball.node.group = Config.groupBallInGame;
         this.balls.push(ball);
         //this.setBallCount(this.balls.length);
     },
