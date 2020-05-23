@@ -20,18 +20,18 @@ cc.Class({
     onLoad () {
         cc.log(com.data);
         if(com.data == 1)
-            this.musicLabel.string = "音效:开启";
+            this.musicLabel.string = "";
         if(com.data == -1)
-            this.musicLabel.string = "音效:关闭";
+            this.musicLabel.string = "×";
     },
 
     musicChange: function(){
         com.data = -com.data;
         if(com.data == 1){
-            this.musicLabel.string = "音效:开启";
+            this.musicLabel.string = "";
         }
         else if(com.data == -1){
-            this.musicLabel.string = "音效:关闭";
+            this.musicLabel.string = "×";
         }
         
     },
