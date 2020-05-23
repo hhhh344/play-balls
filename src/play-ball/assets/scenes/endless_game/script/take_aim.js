@@ -16,22 +16,25 @@ cc.Class({
         }
         */
        //射线原点坐标
-        let origin = cc.v2(0, 340);  
+        let origin = cc.v2(0, 350);  
         let touchPos = this.node.convertTouchToNodeSpaceAR(touch.touch);
-
+        
         if (touchPos.y > origin.y) {
             return;
         }
 
         let graphics = this.node.getComponent(cc.Graphics);
         let line = touchPos.sub(origin);
-        let length = 40;
+        let length = 50;
 
          //获得这个向量的长度
         let lineLength = line.mag();   
+        
         //根据每条线段的长度获得一个增量向量
         let increment = line.normalize().mul(length); 
-        let pos = origin.clone(); //临时变量
+
+        //临时变量
+        let pos = origin.clone(); 
 
         graphics.fillColor = cc.color(255, 255, 255, 150);
         pos.addSelf(increment);
