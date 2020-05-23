@@ -162,7 +162,14 @@
       "__id__": 1
     },
     "_enabled": true,
+    "circle_transition": null,
+    "circle_red": null,
+    "ball": null,
     "nextSceneName": "game_01",
+    "otherBallScript": "normal_ball",
+    "collideAudio": {
+      "__uuid__": "121362f2-9ead-4553-be72-1c33f1ba2315"
+    },
     "_id": ""
   },
   {
@@ -171,9 +178,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "efefe8fb-2f53-4e1d-8fc4-9084438272af"
+      "__id__": 0
     },
-    "fileId": "46uldH7V9JuYFauarundcs",
+    "fileId": "cbLso+np1PAr0wsZi6GYEo",
     "sync": false
   }
 ]

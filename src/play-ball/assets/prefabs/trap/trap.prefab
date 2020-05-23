@@ -95,7 +95,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "d0dc314e-bf30-44eb-9938-f36bc20f251f"
+      "__uuid__": "bb661124-6e63-41de-bee5-5fca7948b2c2"
     },
     "_type": 2,
     "_sizeMode": 0,
@@ -442,6 +442,8 @@
       "__id__": 1
     },
     "_enabled": true,
+    "circle_transition": null,
+    "ball": null,
     "nextSceneName": "game_01",
     "otherBallScript": "normal_ball",
     "_id": ""
@@ -454,7 +456,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "04jkP5iSlFvYhkhDZ/dikq",
+    "fileId": "ear8KhrudNB60a2Q0Js1c5",
     "sync": false
   }
 ]
