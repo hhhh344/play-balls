@@ -118,6 +118,7 @@ cc.Class({
     },
 
     update (dt) {
-        
+        this.border.x = this.player.x;
+        this.border.y = this.player.y;
     },
 });
