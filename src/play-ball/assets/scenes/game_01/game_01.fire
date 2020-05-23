@@ -192,7 +192,7 @@
       "array": [
         0,
         0,
-        589.0704902257744,
+        831.3843876330611,
         0,
         0,
         0,
@@ -1310,7 +1310,7 @@
   {
     "__type__": "cc.Node",
     "_name": "border",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 34
     },
@@ -1378,7 +1378,7 @@
   {
     "__type__": "cc.Node",
     "_name": "fill",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 35
     },
@@ -1446,7 +1446,7 @@
   {
     "__type__": "cc.Node",
     "_name": "rectangle",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 36
     },
@@ -1629,7 +1629,7 @@
   {
     "__type__": "cc.Node",
     "_name": "ball",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 34
     },
@@ -1709,7 +1709,7 @@
   {
     "__type__": "cc.Node",
     "_name": "MotionStreak",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 44
     },
