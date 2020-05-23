@@ -1,5 +1,6 @@
 
 var EndBall = require("../prefabs/ball/script/EndBall");
+var Barrier = require("../prefabs/barrier/script/barrier");
 
 var MainController = cc.Class({
     extends: cc.Component,
@@ -45,6 +46,11 @@ var MainController = cc.Class({
         balls:{
             type:EndBall,
             default:[]
+        },
+
+        barriers:{
+            type:Barrier,
+            default:[]
         }
 
 
@@ -63,6 +69,7 @@ var MainController = cc.Class({
         //初始化，并显示指导动画
         this.init();
         this.guideShow();
+        this.addBarriers();
     },
 
     init(){
@@ -88,11 +95,13 @@ var MainController = cc.Class({
         let graphics = this.node.getChildByName("take_aim").getComponent(cc.Graphics);
         graphics.clear();
 
+        //发射
         let touchPos = this.node.convertTouchToNodeSpaceAR(touch.touch);
         this.shootBalls(touchPos.sub(this.origin_site));
         
     
     },
+
     //连续发射小球
     shootBalls(dir) {
         for (let i = 0; i < this.balls.length; i++) {
@@ -125,11 +134,45 @@ var MainController = cc.Class({
         ))
     },
 
-    //显示小球总数
-    setBallCount(num){
-        this.labelBallNum.string = '小球数：' + num.toString();
+    //添加障碍物
+    addBarriers() {
+        //障碍物的起始地点
+        let startPosX = -240;
+
+        //障碍物能到达的最右边
+        let endPosX = 200;
+
+        //第一个障碍物的位置
+        let currentPosX = startPosX + this.getRandomSpace();
+
+        //没有到达最右边就继续加
+        while (currentPosX < endPosX) {
+            //随机选择一个障碍物
+            let barrier = cc.instantiate(this.prefabBarriers[Math.floor(Math.random() * this.prefabBarriers.length)]).getComponent(Barrier);
+            
+            //设定障碍物的位置
+            barrier.node.parent = this.node;
+            barrier.node.position = cc.v2(currentPosX, -320);
+            barrier.main = this;
+            currentPosX += this.getRandomSpace();
+
+            this.barriers.push(barrier);
+        }
     },
 
+    //消除障碍物
+    removeBarrier(barrier) {
+        let idx = this.barriers.indexOf(barrier);
+        if (idx != -1) {
+            barrier.node.removeFromParent(false);
+            this.barriers.splice(idx, 1);
+        }
+    },
+
+    //获取随机距离，用于生成障碍物的间距
+    getRandomSpace() {
+        return 80 + Math.random() * 100;
+    },
 
 
     //显示引导动画

@@ -45,8 +45,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 72,
-      "height": 72
+      "width": 36,
+      "height": 36
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -158,7 +158,7 @@
       "x": 0,
       "y": 0
     },
-    "_radius": 36,
+    "_radius": 18,
     "_id": ""
   },
   {
@@ -179,7 +179,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "afad3e77-2cbf-4e18-892f-85ef2440ab08"
     },
     "fileId": "13bO9OgipP+4fdTtH5hhiA",
     "sync": false

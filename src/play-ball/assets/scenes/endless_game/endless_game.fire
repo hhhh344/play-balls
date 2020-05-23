@@ -2325,8 +2325,44 @@
       "__id__": 2
     },
     "_enabled": true,
-    "prefabBarriers": [],
-    "prefabBall": null,
+    "prefabBarriers": [
+      {
+        "__uuid__": "39c129e9-b34d-4f72-a404-15a8e6ecaa56"
+      },
+      {
+        "__uuid__": "0261677f-39ce-4be6-a2b6-f5b6df1a06dd"
+      },
+      {
+        "__uuid__": "afad3e77-2cbf-4e18-892f-85ef2440ab08"
+      },
+      {
+        "__uuid__": "ac71292b-f912-437b-806e-ff87564d3ff4"
+      },
+      {
+        "__uuid__": "77ab2416-6f3e-4a46-b055-b574d1c3cc18"
+      },
+      {
+        "__uuid__": "3349f708-3e5b-4015-82b6-2c33bdeaeeee"
+      },
+      {
+        "__uuid__": "57c8829f-05b6-4922-8eb3-b2a5499ebf7e"
+      },
+      {
+        "__uuid__": "3ff866b4-6c45-44dd-8abe-d45762ce9ce0"
+      },
+      {
+        "__uuid__": "ca8ed760-4e57-4eb9-a6f7-ac84330be100"
+      },
+      {
+        "__uuid__": "393966b6-348e-4281-9bbc-b91fb440ffe9"
+      },
+      {
+        "__uuid__": "f4702544-935d-4cda-8de1-a09fa2ef478a"
+      }
+    ],
+    "prefabBall": {
+      "__uuid__": "dd9ca9f8-b91d-48e0-9289-35a1880b97ea"
+    },
     "guidePlay": {
       "__id__": 7
     },
