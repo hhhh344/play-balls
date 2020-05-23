@@ -51,6 +51,7 @@ var MainController = cc.Class({
     },
 
     onLoad(){
+
         //启用物理世界
         cc.director.getPhysicsManager().enabled = true;
         cc.director.getActionManager().gravity = cc.v2(0, -1000); //设置重力
@@ -68,14 +69,11 @@ var MainController = cc.Class({
         //计分牌
         this.score = 0; 
 
-        //收回小球数
-        this.recycleBallsCount = 1; 
+        //小球从圆圈出来到这个位置，再进行发射
+        this.origin_site = cc.v2(0,310);
 
-        //设置障碍物基准率
-        //this.barrierScoreRate = 0; 
-        //this.guidePlay.ZIndex = 10;
         this.guidePlay.active = false;
-        //this.takeAim.main = this;
+
     },
 
     //触摸开始时
@@ -84,36 +82,19 @@ var MainController = cc.Class({
     },
 
      //触摸结束
-     onTouchEnd(touch) {
-         /*
-        if (!this.isRecycleFinished()) {
-            return;
-        }*/
+    onTouchEnd(touch) {
+
+        //让引导射线消失
         let graphics = this.node.getChildByName("take_aim").getComponent(cc.Graphics);
         graphics.clear();
-        //this.recycleBallsCount = 0;
+
         let touchPos = this.node.convertTouchToNodeSpaceAR(touch.touch);
-        this.shootBalls(touchPos.sub(cc.v2(0, 330)));
+        this.shootBalls(touchPos.sub(this.origin_site));
         
     
     },
-     //新增小球
-     addBall(pos) {
-        //let ball = cc.instantiate(this.prefabBall).getComponent(Ball);
-        //ball.node.parent = this.node;
-        //ball.node.position = pos;
-        ball.main = this;
-        //ball.node.group = Config.groupBallInGame;
-        //this.balls.push(ball);
-        //this.setBallCount(this.balls.length);
-    },
-
     //连续发射小球
     shootBalls(dir) {
-        /*
-        if (!this.gameStatus) {
-            return;
-        }*/
         for (let i = 0; i < this.balls.length; i++) {
             let ball = this.balls[i];
             this.scheduleOnce(function () {
@@ -127,13 +108,15 @@ var MainController = cc.Class({
         ball.rigidBody.active = false;
         let pathPos = [];
 
-        //push进小球的初始位置
+        //push进小球的初始位置,先移动初始位置
         pathPos.push(ball.node.position);
-        pathPos.push(cc.v2(0, 330));
+        pathPos.push(this.origin_site);
 
         ball.node.runAction(cc.sequence(
+
             //先移动到pathPos的位置
             cc.cardinalSplineTo(0.8, pathPos, 0.5),
+
             //再按照dir向量移动到touch的位置
             cc.callFunc(function () {
                 ball.rigidBody.active = true;
