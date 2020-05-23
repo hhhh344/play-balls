@@ -195,7 +195,7 @@
       "array": [
         0,
         0,
-        449.03417186223146,
+        452.4982734773692,
         0,
         0,
         0,
@@ -1974,7 +1974,7 @@
   {
     "__type__": "cc.Node",
     "_name": "barrier",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 2
     },
@@ -5306,7 +5306,7 @@
   {
     "__type__": "cc.Node",
     "_name": "heart",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 2
     },
@@ -5489,7 +5489,7 @@
       "__id__": 2
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 138
@@ -5700,7 +5700,7 @@
         "__id__": 161
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 205
