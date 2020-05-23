@@ -188,7 +188,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "3349f708-3e5b-4015-82b6-2c33bdeaeeee"
     },
     "fileId": "5cGS1uhp1D+JA0slDksjI+",
     "sync": false
@@ -259,7 +259,7 @@
     },
     "_angularVelocity": 0,
     "_fixedRotation": false,
-    "enabledContactListener": false,
+    "enabledContactListener": true,
     "bullet": false,
     "awakeOnLoad": true,
     "_id": ""
@@ -373,7 +373,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "3349f708-3e5b-4015-82b6-2c33bdeaeeee"
     },
     "fileId": "13bO9OgipP+4fdTtH5hhiA",
     "sync": false

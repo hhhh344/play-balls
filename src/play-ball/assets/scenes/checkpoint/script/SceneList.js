@@ -132,8 +132,10 @@ cc.Class({
             if((i + 1) % 4 == 0){
                 y -= 150;
                 x = -300;
+            }else{
+                x += 150;
             }
-            x += 150;
+          
 
             //名字为game_01 最后的两个 即01
             item.UpdateItem (x, y, ItemInfo.name.slice(-2), ItemInfo.url);

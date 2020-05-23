@@ -62,8 +62,6 @@ var MainController = cc.Class({
         //启用物理世界
         cc.director.getPhysicsManager().enabled = true;
 
-        // 开启碰撞检测系统
-        cc.director.getCollisionManager().enabled = true;
         cc.director.getActionManager().gravity = cc.v2(0, -1000); //设置重力
         
          //事件监听
@@ -90,7 +88,7 @@ var MainController = cc.Class({
         //设置障碍物的基本分
         this.barrierScoreRate  = 0;
 
-        this.recycleBallsCount = 0;
+        this.recycleBallsCount = 1;
 
     },
 
@@ -101,6 +99,10 @@ var MainController = cc.Class({
 
      //触摸结束
     onTouchEnd(touch) {
+
+        if (!this.isRecycleFinished()) {
+            return;
+        }
 
         //让引导射线消失
         let graphics = this.node.getChildByName("take_aim").getComponent(cc.Graphics);
@@ -148,13 +150,22 @@ var MainController = cc.Class({
         ))
     },
 
+    //新增小球
+    addBall(pos) {
+        let ball = cc.instantiate(this.prefabBall).getComponent(EndBall);
+        ball.node.parent = this.node;
+        ball.node.position = pos;
+        ball.main = this;
+        this.balls.push(ball);
+        //this.setBallCount(this.balls.length);
+    },
     //添加障碍物
     addBarriers() {
         //障碍物的起始地点
         let startPosX = -240;
 
         //障碍物能到达的最右边
-        let endPosX = 200;
+        let endPosX = 190;
 
         //第一个障碍物的位置
         let currentPosX = startPosX + this.getRandomSpace();
@@ -225,7 +236,7 @@ var MainController = cc.Class({
                             barrier.node.runAction(cc.shake(1.5, 3, 3));
                         }
                         if (barrier.node.position.y > 300) {
-                            cc.loadScene('endless_main');
+                            //cc.director.loadScene('endless_main');
                         }
                     }.bind(this))
                 ))
