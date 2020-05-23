@@ -177,7 +177,7 @@
       "array": [
         0,
         0,
-        209.72248968796455,
+        589.0704902257744,
         0,
         0,
         0,
@@ -592,7 +592,7 @@
     "ItemPrefab": {
       "__uuid__": "e672af14-0125-4392-bc10-4551595a521a"
     },
-    "InitItemCount": 4,
+    "InitItemCount": 17,
     "_id": "54DykIb15E+6uJGhOBTgdc"
   }
 ]
