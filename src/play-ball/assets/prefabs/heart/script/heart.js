@@ -72,8 +72,13 @@ cc.Class({
         this.open_the_door();
 
         this.scheduleOnce(function() {
+            if(this.nextSceneName=='game_13'|| this.nextSceneName=='game_15'){
+                cc.view.setOrientation(cc.macro.ORIENTATION_LANDSCAPE);
+            }else{
+                cc.view.setOrientation(cc.macro.ORIENTATION_PORTRAIT);
+            }
             cc.director.loadScene(this.nextSceneName);
-        }, 1.2);
+        }, 0.3);
     },
     
     open_the_door:function(){
@@ -82,7 +87,7 @@ cc.Class({
         this.circle_transition.active=true;
         this.circle_transition.scale=0.1;
         cc.tween(this.circle_transition)
-        .to(.5, { scale: 2.74 })
+        .to(0.2, { scale: 2.74 })
         .start()
              
     },
@@ -91,11 +96,11 @@ cc.Class({
         this.circle_transition.x=this.ball.x;
         this.circle_transition.y=this.ball.y;
         cc.tween(this.circle_transition)
-        .to(.5, { scale: 0.1 })
+        .to(0.2, { scale: 0.1 })
         .start()
                 this.scheduleOnce(function() {
             this.circle_transition.active=false;
-                    },.5);
+                    },0.3);
     },
     close_the_reddoor:function(){
         this.circle_red.x=this.ball.x;
@@ -103,11 +108,11 @@ cc.Class({
         this.circle_red.scale = 2.5;
         this.circle_red.active=true;
         cc.tween(this.circle_red)
-        .to(.5, { scale: 0.1 })
+        .to(0.2, { scale: 0.1 })
         .start()
                 this.scheduleOnce(function() {
             this.circle_red.active=false;
-                    },.5);
+                    },0.3);
     },
     // close_the_door:function(){
     //     com.transition = -com.transition;
