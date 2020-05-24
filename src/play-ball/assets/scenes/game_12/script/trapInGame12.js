@@ -18,12 +18,9 @@ cc.Class({
             default: null,
             type: cc.Node
         },
+
         nextSceneName: {
             default: 'game_01',
-        },
-
-        otherBallScript: {
-            default: 'normal_ball'
         }
     },
 
@@ -39,14 +36,16 @@ cc.Class({
 
     },
 
-    onCollisionEnter: function(other, self) {
-        other.getComponent(cc.RigidBody).linearVelocity = cc.Vec2.ZERO;
-        this.open_the_door();
-        console.log('fail');
-        com.result=-1;
-        this.scheduleOnce(function() {
-            cc.director.loadScene(this.nextSceneName);
-        }, 0.3);
+    onBeginContact: function(contact, selfCollider, otherCollider) {
+        if(otherCollider.name != `${this.ball.name}<PhysicsCircleCollider>`) {
+            this.open_the_door();
+            console.log('fail');
+            com.result=-1;
+            this.scheduleOnce(function() {
+                cc.director.loadScene(this.nextSceneName);
+            }, 1.3);
+            this.node.getComponent(cc.RigidBody).enabledContactListener = false;
+        }
     },
 
     open_the_door:function(){
@@ -54,7 +53,7 @@ cc.Class({
         this.circle_transition.y=this.ball.y;
         this.circle_transition.active=true;
         cc.tween(this.circle_transition)
-        .to(0.2, { scale: 3 })
+        .to(.5, { scale: 2.5 })
         .start()
              
     },
