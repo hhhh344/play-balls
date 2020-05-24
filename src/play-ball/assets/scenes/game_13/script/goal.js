@@ -89,6 +89,7 @@ cc.Class({
         cc.tween(this.circle_transition)
         .to(0.2, { scale: 2.74 })
         .start()
+             
     },
 
     close_the_door:function(){
