@@ -21,10 +21,6 @@ cc.Class({
         nextSceneName: {
             default: 'game_01',
         },
-
-        otherBallScript: {
-            default: 'normal_ball'
-        },
         
         collideAudio: {
             default: null,
@@ -62,18 +58,19 @@ cc.Class({
 
     },
 
-    onCollisionEnter: function(other, self) {
-        other.getComponent(cc.RigidBody).linearVelocity = cc.Vec2.ZERO;
+    onBeginContact: function(contact, selfCollider, otherCollider) {
         if(com.data == 1) {
             cc.audioEngine.playEffect(this.collideAudio);
         }
-        com.result=1;
-        console.log('win');
-        this.open_the_door();
-
-        this.scheduleOnce(function() {
-            cc.director.loadScene(this.nextSceneName);
-        }, 1.2);
+        if(otherCollider.name == `${this.ball.name}<PhysicsCircleCollider>`) {   
+            com.result=1;
+            console.log('win');
+            this.open_the_door();
+            this.scheduleOnce(function() {
+                cc.director.loadScene(this.nextSceneName);
+            }, 1.2);
+            this.node.getComponent(cc.RigidBody).enabledContactListener = false;
+        }
     },
     
     open_the_door:function(){
