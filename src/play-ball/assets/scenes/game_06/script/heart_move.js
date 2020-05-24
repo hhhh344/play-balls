@@ -9,21 +9,6 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
         ball: {
             default: null,
             type: cc.Node
@@ -44,10 +29,10 @@ cc.Class({
     update (dt) {
         if(this.ball.getComponent(cc.RigidBody).linearVelocity.mag() > 0 && this.times === 1) {
             if(this.ball.getComponent(cc.RigidBody).linearVelocity.x <= 0) {
-                this.rigidBody.linearVelocity = cc.v2(500, 0);
+                this.rigidBody.linearVelocity = cc.v2(800, -800);
             }
             else {
-                this.rigidBody.linearVelocity = cc.v2(-500, 0);
+                this.rigidBody.linearVelocity = cc.v2(-800, -800);
             }
             this.times--;
             console.log(this.times);
