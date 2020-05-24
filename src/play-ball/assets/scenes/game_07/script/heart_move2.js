@@ -44,10 +44,10 @@ cc.Class({
     update (dt) {
         if(this.ball.getComponent(cc.RigidBody).linearVelocity.mag() > 0 && this.times === 1) {
             if(this.ball.getComponent(cc.RigidBody).linearVelocity.x <= 0) {
-                this.rigidBody.linearVelocity = cc.v2(200, 0);
+                this.rigidBody.linearVelocity = cc.v2(100, 0);
             }
             else {
-                this.rigidBody.linearVelocity = cc.v2(-200, 0);
+                this.rigidBody.linearVelocity = cc.v2(-100, 0);
             }
             this.times--;
         }

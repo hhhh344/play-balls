@@ -37,6 +37,11 @@ var EndBall = cc.Class({
             pathPos.push(this.node.position);
             if(this.node.position.x > 0){
 
+               
+              
+                
+    
+
                 //回到地面的边界，右侧
                 // pathPos.push(cc.v2(250, -350));
                 pathPos.push(cc.v2(349, -498))
