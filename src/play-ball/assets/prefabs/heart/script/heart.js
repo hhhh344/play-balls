@@ -73,6 +73,21 @@ cc.Class({
             //小球碰撞后,即胜利后则取消监听,防止多次碰撞,多次胜利
             this.node.getComponent(cc.RigidBody).enabledContactListener = false;
         }
+<<<<<<< HEAD
+=======
+        com.result=1;
+        console.log('win');
+        this.open_the_door();
+
+        this.scheduleOnce(function() {
+            if(this.nextSceneName=='game_13'|| this.nextSceneName=='game_15'){
+                cc.view.setOrientation(cc.macro.ORIENTATION_LANDSCAPE);
+            }else{
+                cc.view.setOrientation(cc.macro.ORIENTATION_PORTRAIT);
+            }
+            cc.director.loadScene(this.nextSceneName);
+        }, 0.3);
+>>>>>>> upstream/alpha1.1
     },
 
     open_the_door:function(){
@@ -81,19 +96,32 @@ cc.Class({
         this.circle_transition.active=true;
         this.circle_transition.scale=0.1;
         cc.tween(this.circle_transition)
+<<<<<<< HEAD
             .to(.5, { scale: 2.74 })
             .start();
+=======
+        .to(0.2, { scale: 2.74 })
+        .start()
+>>>>>>> upstream/alpha1.1
     },
 
     close_the_door:function(){
         this.circle_transition.x=this.ball.x;
         this.circle_transition.y=this.ball.y;
         cc.tween(this.circle_transition)
+<<<<<<< HEAD
             .to(.5, { scale: 0.1 })
             .start();
         this.scheduleOnce(function() {
             this.circle_transition.active=false;
         },.5);
+=======
+        .to(0.2, { scale: 0.1 })
+        .start()
+                this.scheduleOnce(function() {
+            this.circle_transition.active=false;
+                    },0.3);
+>>>>>>> upstream/alpha1.1
     },
     close_the_reddoor:function(){
         this.circle_red.x=this.ball.x;
@@ -101,11 +129,19 @@ cc.Class({
         this.circle_red.scale = 2.5;
         this.circle_red.active=true;
         cc.tween(this.circle_red)
+<<<<<<< HEAD
             .to(.5, { scale: 0.1 })
             .start();
         this.scheduleOnce(function() {
             this.circle_red.active=false;
         },.5);
+=======
+        .to(0.2, { scale: 0.1 })
+        .start()
+                this.scheduleOnce(function() {
+            this.circle_red.active=false;
+                    },0.3);
+>>>>>>> upstream/alpha1.1
     },
     // close_the_door:function(){
     //     com.transition = -com.transition;

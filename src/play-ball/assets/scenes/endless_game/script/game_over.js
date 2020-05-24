@@ -26,36 +26,17 @@ cc.Class({
         // },
     },
 
-    Load_main(){
-        cc.director.loadScene('main');
-    },
-
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {},
 
-<<<<<<< HEAD
     start () {
-         //两个按钮间的距离
-         let item_nap = 150;
- 
-         let init_x = -25-item_nap;
 
-         this.node.x = init_x;
-=======
-    onLoad () {
-
-        //左上角第一个button的位置
-        var size = this.node.parent.getContentSize();
-        //console.log(size);
-
-         let init_x =  - size.width/2 + 50;
-         let init_y =   size.height/2 - 70;
-         this.node.x = init_x;
-         this.node.y = init_y;
->>>>>>> upstream/alpha1.1
-         
     },
+
+    loadMain(){
+        cc.director.loadScene('main');
+    }
 
     // update (dt) {},
 });
