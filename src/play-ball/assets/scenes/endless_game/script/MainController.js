@@ -1,7 +1,8 @@
 var EndBall = require("../prefabs/ball/script/EndBall");
 var Barrier = require("../prefabs/barrier/script/barrier");
-var Config  = require("../script/config")
+var Config  = require("../script/config");
 require("./shake");
+var com = require("../../common");
 
 var MainController = cc.Class({
     extends: cc.Component,
@@ -52,6 +53,11 @@ var MainController = cc.Class({
         barriers:{
             type:Barrier,
             default:[]
+        },
+
+        gameOverMark:{
+            type:cc.Node,
+            default:null
         }
 
 
@@ -92,6 +98,14 @@ var MainController = cc.Class({
         this.barrierScoreRate  = 0;
 
         this.recycleBallsCount = 1;
+
+        this.gameOverMark.active = false;
+
+        com.data = 1;
+
+        com.mouse = 1;
+
+        this.score = 0;
 
     },
 
@@ -148,7 +162,7 @@ var MainController = cc.Class({
             //再按照dir向量移动到touch的位置
             cc.callFunc(function () {
                 ball.rigidBody.active = true;
-                ball.rigidBody.linearVelocity = dir.mul(3);
+                ball.rigidBody.linearVelocity = dir.mul(2);
                
             })
         ))
@@ -162,7 +176,11 @@ var MainController = cc.Class({
         ball.main = this;
         ball.node.group = Config.groupBallInGame;
         this.balls.push(ball);
-        //this.setBallCount(this.balls.length);
+        this.setBallCount(this.balls.length);
+    },
+    //显示小球总数
+    setBallCount(num){
+        this.labelBallNum.string = '小球数：' + num.toString();
     },
     //添加障碍物
     addBarriers() {
@@ -180,6 +198,13 @@ var MainController = cc.Class({
             //随机选择一个障碍物
             let barrier = cc.instantiate(this.prefabBarriers[Math.floor(Math.random() * this.prefabBarriers.length)]).getComponent(Barrier);
             
+            if(barrier.name.startsWith('addBall')){
+                let rand = this.randomNum(0,7);
+                console.log(rand);
+                if(rand != 0){
+                    continue;
+                }
+            }
             //设定障碍物的位置
             barrier.node.parent = this.node;
             barrier.node.position = cc.v2(currentPosX, -320);
@@ -192,7 +217,7 @@ var MainController = cc.Class({
 
     //获取随机距离，用于生成障碍物的间距
     getRandomSpace() {
-        return 80 + Math.random() * 100;
+        return 65 + Math.random() * 100;
     },
 
 
@@ -203,6 +228,7 @@ var MainController = cc.Class({
             barrier.node.removeFromParent(false);
             this.barriers.splice(idx, 1);
         }
+        this.addScore();
     },
 
     //抖动障碍物
@@ -213,7 +239,9 @@ var MainController = cc.Class({
 
     //设置障碍物自身分数值
     setBarrierScore() {
+        
         let score = Math.floor(this.randomNum(1 + 2 * this.barrierScoreRate, 5 + 3 * this.barrierScoreRate));
+        this.barrierScoreRate += 0.1;
         return score;
     },
 
@@ -229,7 +257,7 @@ var MainController = cc.Class({
     recycleBall() {
         //已经回收ball的数量
         this.recycleBallsCount++;
-        //this.barrierScoreRate += 0.1;
+        
 
         if (this.isRecycleFinished()) {
             for (let i = 0; i < this.barriers.length; i++) {
@@ -241,13 +269,20 @@ var MainController = cc.Class({
                             barrier.node.runAction(cc.shake(1.5, 3, 3));
                         }
                         if (barrier.node.position.y > 300) {
-                            //cc.director.loadScene('endless_main');
+                            this.gameOver();
                         }
                     }.bind(this))
                 ))
             }
             this.addBarriers();
         }
+    },
+
+
+    //计分牌显示
+    addScore() {
+        this.score++;
+        this.labelScore.string = '分数：' + this.score.toString();
     },
 
     //小球是否收回完毕
@@ -270,4 +305,18 @@ var MainController = cc.Class({
         let animCtrl = handMove.getComponent(cc.Animation);
         animCtrl.stop('handMove');
     },
+
+     //游戏结束
+    gameOver() {
+        //this.gameStatus = false;
+        this.gameOverMark.zIndex = 10;
+        this.gameOverMark.active = true;
+
+        com.data = -1;
+        com.mouse = -1;
+        // 停止所有动作
+        //this.node.stopAllActions();
+        //cc.director.pause();
+        //this.gameOverMark.getChildByName("score").getComponent(cc.Label).string = "得分：" + this.score.toString();
+    }
 });

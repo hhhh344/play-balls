@@ -17,25 +17,31 @@ cc.Class({
     },
     init () {
         this.index = -1;
-        this.__name = '';
+        this.name = '';
     },
 
     LoadExample () {
         if (this.url) {
+            if(this.name.startsWith('game_z')||this.name.startsWith('game_z')){
+                  console.log(this.name);
+                  cc.view.setOrientation(cc.macro.ORIENTATION_LANDSCAPE);
+             }else{
+                   cc.view.setOrientation(cc.macro.ORIENTATION_PORTRAIT);
+            }
             cc.director.loadScene(this.url);
         }
     },
 
     UpdateItem (x, y, name, url) {
-        //有链接的按钮才显示
-        let isDir = !url;
         //设置按钮的位置
         this.node.y = y;
         this.node.x = x;
 
         //按钮label的名字
-        this.label.string = name;
+        this.label.string = name.slice(-2);
+      
         this.url = url;
+        this.name = name;
     }
  
 });

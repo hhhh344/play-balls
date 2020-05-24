@@ -50,7 +50,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 30,
-      "height": 29
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -62,7 +62,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        350,
+        446,
         0,
         0,
         0,
@@ -199,7 +199,7 @@
     "_enabled": true,
     "_type": 2,
     "_allowSleep": true,
-    "_gravityScale": 5,
+    "_gravityScale": 2,
     "_linearDamping": 0,
     "_angularDamping": 0,
     "_linearVelocity": {
