@@ -38,7 +38,7 @@ cc.Class({
          //两个按钮间的距离
          let item_nap = 150;
  
-         let init_x = -15-item_nap;
+         let init_x = -25-item_nap;
 
          this.node.x = init_x;
          
