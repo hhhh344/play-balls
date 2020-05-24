@@ -29,12 +29,19 @@ cc.Class({
     Load_main(){
         cc.director.loadScene('main');
     },
+
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {},
 
     start () {
+         //两个按钮间的距离
+         let item_nap = 150;
+ 
+         let init_x = -25-item_nap;
 
+         this.node.x = init_x;
+         
     },
 
     // update (dt) {},

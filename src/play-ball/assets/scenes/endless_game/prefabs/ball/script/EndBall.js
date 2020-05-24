@@ -37,17 +37,31 @@ var EndBall = cc.Class({
             pathPos.push(this.node.position);
             if(this.node.position.x > 0){
 
-                //回到地面的边界，右侧
-                pathPos.push(cc.v2(250, -350));
-                //回到发射台的右侧
-                pathPos.push(cc.v2(250, 420));
+               
+              
+                
+    
 
-                pathPos.push(cc.v2(0, 350));
+                //回到地面的边界，右侧
+                // pathPos.push(cc.v2(250, -350));
+                pathPos.push(cc.v2(349, -498))
+                //回到发射台的右侧
+                //pathPos.push(cc.v2(250, 420));
+                pathPos.push(cc.v2(338, 608))
+
+                //pathPos.push(cc.v2(0, 350));
+                pathPos.push(cc.v2(0, 446))
             }else{
 
-                pathPos.push(cc.v2(-250, -350));
-                pathPos.push(cc.v2(-250, 420));
-                pathPos.push(cc.v2(0, 350));
+                //回到地面的边界，左侧
+                // pathPos.push(cc.v2(250, -350));
+                pathPos.push(cc.v2(-349, -498))
+                //回到发射台的右侧
+                //pathPos.push(cc.v2(250, 420));
+                pathPos.push(cc.v2(-338, 608))
+
+                //pathPos.push(cc.v2(0, 350));
+                pathPos.push(cc.v2(0, 446))
             }
             // 回收小球
             this.node.runAction(cc.sequence(

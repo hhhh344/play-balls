@@ -16,7 +16,7 @@ cc.Class({
         }
         */
        //射线原点坐标
-        let origin = cc.v2(0, 350);  
+        let origin = cc.v2(0, 446);  
         let touchPos = this.node.convertTouchToNodeSpaceAR(touch.touch);
         
         if (touchPos.y > origin.y) {

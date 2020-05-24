@@ -79,7 +79,7 @@ var MainController = cc.Class({
         this.score = 0; 
 
         //小球从圆圈出来到这个位置，再进行发射
-        this.origin_site = cc.v2(0,320);
+        this.origin_site = cc.v2(0,420);
 
         this.guidePlay.active = false;
 
@@ -167,10 +167,10 @@ var MainController = cc.Class({
     //添加障碍物
     addBarriers() {
         //障碍物的起始地点
-        let startPosX = -240;
+        let startPosX = -320;
 
         //障碍物能到达的最右边
-        let endPosX = 190;
+        let endPosX = 270;
 
         //第一个障碍物的位置
         let currentPosX = startPosX + this.getRandomSpace();
