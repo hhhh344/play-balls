@@ -38,38 +38,31 @@ cc.Class({
 
     //碰撞回调
     onBeginContact: function(contact, selfCollider, otherCollider) {
+        //碰到心或者陷阱 撤销小球的碰撞监听 防止多次碰撞 音效炸裂
+        if(otherCollider.node._name == 'heart' || otherCollider.node._name == 'trap') {
+            this.rigidBody.enabledContactListener = false;
+            this.rigidBody.linearVelocity = cc.Vec2.ZERO;
+            return;
+        }
         if(com.data === 1) {
             cc.audioEngine.playEffect(this.collideAudio);
         }
     },
 
     onEndContact: function(contact, selfCollider, otherCollider) {
-        console.log('contact');
         //限速, 小于最小值时添加重力
         if(this.rigidBody.linearVelocity.mag() < this.minSpeed * 50) {
             this.rigidBody.gravityScale = 1;
         }
         if(this.rigidBody.linearVelocity.mag() > this.maxSpeed * 50) {
             this.rigidBody.linearVelocity = this.rigidBody.linearVelocity.normalize().mulSelf(50 * this.maxSpeed);
-        } 
-    },
-
-    collideWall () {
-        const canvas = this.node.parent.getComponent('charge_bar').Canvas;
-        if(Math.abs(this.node.x) + this.node.width/2 >= canvas.width/2) {
-            this.rigidBody.linearVelocity = cc.v2(-this.rigidBody.linearVelocity.x,this.rigidBody.linearVelocity.y);
-            this.onBeginContact();
-        }
-        if(Math.abs(this.node.y) + this.node.height/2 >=  canvas.height/2) {
-            this.rigidBody.linearVelocity = cc.v2(this.rigidBody.linearVelocity.x, -this.rigidBody.linearVelocity.y);
-            this.onBeginContact();
         }
     },
 
-    start () {
+    // start () {
 
-    },
+    // },
 
-    update () {
-    }
+    // update () {
+    // }
 });

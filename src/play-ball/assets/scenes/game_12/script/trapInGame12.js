@@ -18,13 +18,9 @@ cc.Class({
             default: null,
             type: cc.Node
         },
+
         nextSceneName: {
             default: 'game_01',
-        },
-
-        collideAudio: {
-            default: null,
-            type: cc.AudioClip
         }
     },
 
@@ -41,12 +37,7 @@ cc.Class({
     },
 
     onBeginContact: function(contact, selfCollider, otherCollider) {
-        //陷阱被碰撞时 播放音效
-        if(com.data == 1) {
-            cc.audioEngine.playEffect(this.collideAudio);
-        }
-        //小球碰到陷阱后， 判定为失败，并且撤销陷阱的碰撞监听
-        if(otherCollider.node._name == this.ball._name) {
+        if(otherCollider.name != `${this.ball.name}<PhysicsCircleCollider>`) {
             this.open_the_door();
             console.log('fail');
             com.result=-1;
@@ -62,9 +53,9 @@ cc.Class({
         this.circle_transition.y=this.ball.y;
         this.circle_transition.active=true;
         cc.tween(this.circle_transition)
-            .to(.5, { scale: 2.5 })
-            .start()
-
+        .to(.5, { scale: 2.5 })
+        .start()
+             
     },
     // update (dt) {},
 });

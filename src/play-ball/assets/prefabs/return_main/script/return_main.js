@@ -29,12 +29,22 @@ cc.Class({
     Load_main(){
         cc.director.loadScene('main');
     },
+
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {},
 
-    start () {
+    onLoad () {
 
+        //左上角第一个button的位置
+        var size = this.node.parent.getContentSize();
+        //console.log(size);
+
+         let init_x =  - size.width/2 + 50;
+         let init_y =   size.height/2 - 70;
+         this.node.x = init_x;
+         this.node.y = init_y;
+         
     },
 
     // update (dt) {},
