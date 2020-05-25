@@ -38,12 +38,22 @@ cc.Class({
 
     //碰撞回调
     onBeginContact: function(contact, selfCollider, otherCollider) {
+        if(otherCollider.node._name == 'heart' || otherCollider.node._name == 'trap' || otherCollider.node._name == 'pole_left' ||
+            otherCollider.node._name == 'pole_top' || otherCollider.node._name == 'pole_right') {
+            this.rigidBody.linearVelocity = cc.Vec2.ZERO;
+            return;
+        }
         if(com.data === 1) {
             cc.audioEngine.playEffect(this.collideAudio);
         }
     },
 
     onEndContact: function(contact, selfCollider, otherCollider) {
+        if(otherCollider.node._name == 'heart' || otherCollider.node._name == 'trap' || otherCollider.node._name == 'pole_left' ||
+            otherCollider.node._name == 'pole_top' || otherCollider.node._name == 'pole_right') {
+            this.rigidBody.linearVelocity = cc.Vec2.ZERO;
+            return;
+        }
         console.log('contact');
         //限速, 小于最小值时添加重力
         // if(this.rigidBody.linearVelocity.mag() < this.minSpeed * 50) {
