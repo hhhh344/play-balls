@@ -52,7 +52,7 @@ cc.Class({
             com.result=-1;
             this.scheduleOnce(function() {
                 cc.director.loadScene(this.nextSceneName);
-            }, 1.3);
+            }, 0.3);
             this.node.getComponent(cc.RigidBody).enabledContactListener = false;
         }
     },
@@ -62,7 +62,7 @@ cc.Class({
         this.circle_transition.y=this.ball.y;
         this.circle_transition.active=true;
         cc.tween(this.circle_transition)
-            .to(.5, { scale: 2.5 })
+            .to(0.3, { scale: 3 })
             .start()
 
     },

@@ -72,7 +72,7 @@ cc.Class({
         this.open_the_door();
 
         this.scheduleOnce(function() {
-            if(this.nextSceneName=='game_13'|| this.nextSceneName=='game_15'){
+            if(this.nextSceneName=='game_z_13'|| this.nextSceneName=='game_z_14'){
                 cc.view.setOrientation(cc.macro.ORIENTATION_LANDSCAPE);
             }else{
                 cc.view.setOrientation(cc.macro.ORIENTATION_PORTRAIT);
@@ -87,7 +87,7 @@ cc.Class({
         this.circle_transition.active=true;
         this.circle_transition.scale=0.1;
         cc.tween(this.circle_transition)
-        .to(0.2, { scale: 2.74 })
+        .to(0.2, { scale: 3 })
         .start()
              
     },
@@ -105,7 +105,7 @@ cc.Class({
     close_the_reddoor:function(){
         this.circle_red.x=this.ball.x;
         this.circle_red.y=this.ball.y;
-        this.circle_red.scale = 2.5;
+        this.circle_red.scale = 3;
         this.circle_red.active=true;
         cc.tween(this.circle_red)
         .to(0.2, { scale: 0.1 })
