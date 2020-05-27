@@ -28,6 +28,16 @@ cc.Class({
             type: cc.Node
         },
 
+        top_Curtain_red: {
+            default: null,
+            type: cc.Node
+        },
+
+        bottom_Curtain_red: {
+            default: null,
+            type: cc.Node
+        },
+
         ball: {
             default: null,
             type: cc.Node
@@ -58,10 +68,23 @@ cc.Class({
     onLoad () {
         let manager = cc.director.getCollisionManager();
         manager.enabled = true;
-            
+            if(com.result==1)
             this.scheduleOnce(function() {
                 this.open_the_door();
             }, this.duration);
+            if(com.result==-1){
+
+                this.top_Curtain.active=false;
+                this.bottom_Curtain.active=false;
+                this.top_Curtain_red.y=250;
+                this.bottom_Curtain_red.y=-250;
+
+                this.top_Curtain_red.active=true;
+                this.bottom_Curtain_red.active=true;
+                this.scheduleOnce(function() {
+                    this.open_the_door_red();
+                }, this.duration);
+            }
     },
 
     start () {
@@ -76,6 +99,12 @@ cc.Class({
             }
             com.result=1;
             console.log('win');
+
+            this.top_Curtain.y=780;
+            this.bottom_Curtain.y=-780;
+            this.top_Curtain.active=true;
+            this.bottom_Curtain.active=true;
+
             this.close_the_door();
             this.scheduleOnce(function() {
                 if(this.nextSceneName=='game_z_13'|| this.nextSceneName=='game_z_14'){
@@ -106,6 +135,17 @@ cc.Class({
         .to(this.duration, { position: cc.v2(0, 780) })
         .start()
         cc.tween(this.bottom_Curtain)
+        .to(this.duration, { position: cc.v2(0, -780) })
+        .start()
+        this.scheduleOnce(function() {
+        },this.duration);
+    },
+
+    open_the_door_red:function(){
+        cc.tween(this.top_Curtain_red)
+        .to(this.duration, { position: cc.v2(0, 780) })
+        .start()
+        cc.tween(this.bottom_Curtain_red)
         .to(this.duration, { position: cc.v2(0, -780) })
         .start()
         this.scheduleOnce(function() {
