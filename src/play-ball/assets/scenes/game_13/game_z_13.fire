@@ -3178,12 +3178,15 @@
     "ball": {
       "__id__": 50
     },
-    "nextSceneName": "game_13",
+    "nextSceneName": "game_z_14",
     "otherBallScript": "sticky_ball",
     "collideAudio": {
       "__uuid__": "f4b8b768-1de5-43d3-82f9-f5c2bf602256"
     },
     "v": null,
+    "openGround": {
+      "__id__": 74
+    },
     "_id": "ba3EqLJd5F0JxpnQbBbjM7"
   },
   {
