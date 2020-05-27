@@ -34,15 +34,6 @@ cc.Class({
 
     // onLoad () {},
 
-<<<<<<< HEAD
-    start () {
-         //两个按钮间的距离
-         let item_nap = 150;
- 
-         let init_x = -25-item_nap;
-
-         this.node.x = init_x;
-=======
     onLoad () {
 
         //左上角第一个button的位置
@@ -53,7 +44,6 @@ cc.Class({
          let init_y =   size.height/2 - 70;
          this.node.x = init_x;
          this.node.y = init_y;
->>>>>>> upstream/alpha1.1
          
     },
 

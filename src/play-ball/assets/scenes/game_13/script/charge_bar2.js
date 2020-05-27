@@ -52,10 +52,7 @@ cc.Class({
 
         this.Canvas.on(cc.Node.EventType.TOUCH_START, e => {
             [this.border.x, this.border.y] = [this.player.x, this.player.y];
-            this.ballRigidBody.gravityScale /=10;
-            this.ballRigidBody.linearVelocity=cc.v2(this.ballRigidBody.linearVelocity.x/10,this.ballRigidBody.linearVelocity.y/10);
-            //cc.director.pause();
-            if( com.mouse === 1) {
+            if( this.ballRigidBody.linearVelocity.mag() === 0 &&com.mouse === 1) {
                 this.border.opacity = 255;
                 this.calculateChargeBar(e);
                 this.chargeBarChange();
@@ -64,7 +61,7 @@ cc.Class({
 
         this.Canvas.on(cc.Node.EventType.TOUCH_MOVE, e => {
             [this.border.x, this.border.y] = [this.player.x, this.player.y];
-            if(com.mouse === 1) {
+            if(this.ballRigidBody.linearVelocity.mag() === 0 &&com.mouse === 1) {
                 this.calculateChargeBar(e);
                 this.chargeBarChange();
             }
@@ -72,9 +69,7 @@ cc.Class({
 
         this.Canvas.on(cc.Node.EventType.TOUCH_END, e => {
             [this.border.x, this.border.y] = [this.player.x, this.player.y];
-            //cc.director.resume();
-
-            if(com.mouse === 1) {
+            if(this.ballRigidBody.linearVelocity.mag() === 0 &&com.mouse === 1) {
                 this.border.opacity = 0;
                 this.ballRigidBody.gravityScale = 1.5;
                 this.launch();

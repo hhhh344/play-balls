@@ -6,5 +6,7 @@ module.exports = {
     mouse : 1,
 
     //result记录当前是否过关  1：过关 调用的是浅绿色由外往内  -1：死亡 调用的是浅红色由外往内
-    result : 1
+    result : 1,
+    
+    type : 1,
     };
