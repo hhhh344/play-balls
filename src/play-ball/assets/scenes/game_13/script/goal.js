@@ -72,7 +72,7 @@ cc.Class({
         this.open_the_door();
 
         this.scheduleOnce(function() {
-            if(this.nextSceneName=='game_z_13'|| this.nextSceneName=='game_z_14'){
+            if(this.nextSceneName=='game_z_13'|| this.nextSceneName=='game_z_14' || this.nextSceneName=='game_z_15'){
                 cc.view.setOrientation(cc.macro.ORIENTATION_LANDSCAPE);
             }else{
                 cc.view.setOrientation(cc.macro.ORIENTATION_PORTRAIT);

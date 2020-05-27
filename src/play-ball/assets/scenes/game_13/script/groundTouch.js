@@ -34,7 +34,10 @@ cc.Class({
             default: null,
             type: cc.v2
         },
-
+        openGround: {
+            default: null,
+            type: cc.Node
+        },
     },
 
     onLoad () {
@@ -48,6 +51,7 @@ cc.Class({
     },
 
     onCollisionEnter: function(other, self){
+        this.openGround.active = true;
         if(com.data == 1) {
             cc.audioEngine.playEffect(this.collideAudio);
         }
