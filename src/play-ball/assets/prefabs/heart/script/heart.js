@@ -3,12 +3,27 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        circle_transition: {
+
+        /*circle_transition: {
             default: null,
             type: cc.Node
         },
 
         circle_red: {
+            default: null,
+            type: cc.Node
+        },
+        */
+
+        //幕布开合时间   
+        duration : 0.5,  
+
+        top_Curtain: {
+            default: null,
+            type: cc.Node
+        },
+
+        bottom_Curtain: {
             default: null,
             type: cc.Node
         },
@@ -43,15 +58,10 @@ cc.Class({
     onLoad () {
         let manager = cc.director.getCollisionManager();
         manager.enabled = true;
-        if(com.result==1){
+            
             this.scheduleOnce(function() {
-                this.close_the_door();
-            }, 0.1);
-        }
-        else if(com.result==-1){
-            this.circle_transition.active=false;
-            this.close_the_reddoor();
-        }
+                this.open_the_door();
+            }, this.duration);
     },
 
     start () {
@@ -66,7 +76,7 @@ cc.Class({
             }
             com.result=1;
             console.log('win');
-            this.open_the_door();
+            this.close_the_door();
             this.scheduleOnce(function() {
                 if(this.nextSceneName=='game_z_13'|| this.nextSceneName=='game_z_14'){
                     cc.view.setOrientation(cc.macro.ORIENTATION_LANDSCAPE);
@@ -74,43 +84,32 @@ cc.Class({
                     cc.view.setOrientation(cc.macro.ORIENTATION_PORTRAIT);
                 }
                 cc.director.loadScene(this.nextSceneName);
-            }, 0.3);
+            },this.duration);
             //小球碰撞后,即胜利后则取消监听,防止多次碰撞,多次胜利
             this.node.getComponent(cc.RigidBody).enabledContactListener = false;
         }
     },
 
-    open_the_door:function(){
-        this.circle_transition.x=this.ball.x;
-        this.circle_transition.y=this.ball.y;
-        this.circle_transition.active=true;
-        this.circle_transition.scale=0.1;
-        cc.tween(this.circle_transition)
-            .to(0.3, { scale: 3 })
-            .start();
+    close_the_door:function(){
+        cc.tween(this.top_Curtain)
+        .to(this.duration, { position: cc.v2(0, 250) })
+        .start()
+        cc.tween(this.bottom_Curtain)
+        .to(this.duration, { position: cc.v2(0, -250) })
+        .start()
+        this.scheduleOnce(function() {
+        },this.duration);
     },
 
-    close_the_door:function(){
-        this.circle_transition.x=this.ball.x;
-        this.circle_transition.y=this.ball.y;
-        cc.tween(this.circle_transition)
-            .to(0.3, { scale: 0.1 })
-            .start();
+    open_the_door:function(){
+        cc.tween(this.top_Curtain)
+        .to(this.duration, { position: cc.v2(0, 780) })
+        .start()
+        cc.tween(this.bottom_Curtain)
+        .to(this.duration, { position: cc.v2(0, -780) })
+        .start()
         this.scheduleOnce(function() {
-            this.circle_transition.active=false;
-        },0.3);
-    },
-    close_the_reddoor:function(){
-        this.circle_red.x=this.ball.x;
-        this.circle_red.y=this.ball.y;
-        this.circle_red.scale = 3;
-        this.circle_red.active=true;
-        cc.tween(this.circle_red)
-            .to(0.3, { scale: 0.1 })
-            .start();
-        this.scheduleOnce(function() {
-            this.circle_red.active=false;
-        },0.3);
+        },this.duration);
     },
     update (dt) {},
 });
