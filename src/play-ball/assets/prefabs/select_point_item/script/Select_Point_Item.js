@@ -22,7 +22,7 @@ cc.Class({
 
     LoadExample () {
         if (this.url) {
-            if(this.name.startsWith('game_z')||this.name.startsWith('game_z')){
+            if(this.name.startsWith('game_z')){
                   console.log(this.name);
                   cc.view.setOrientation(cc.macro.ORIENTATION_LANDSCAPE);
              }else{
