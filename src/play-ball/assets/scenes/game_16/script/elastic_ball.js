@@ -29,7 +29,7 @@ cc.Class({
         var physicsManager = cc.director.getPhysicsManager();
         manager.enabled = true;
         physicsManager.enabled = true;
-        //physicsManager.gravity = cc.v2(-300, 0);
+        physicsManager.gravity = cc.v2(-300, 0);
         this.rigidBody = this.node.getComponent(cc.RigidBody);
         //manager.enabledDebugDraw = true;
     },
