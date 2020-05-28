@@ -61,7 +61,6 @@ cc.Class({
         //恢复调用鼠标事件
         com.mouse = 1; 
         com.result = 1;
-        cc.view.setOrientation(cc.macro.ORIENTATION_PORTRAIT);
         cc.director.loadScene(this.homeSceneName);  
         
     },
