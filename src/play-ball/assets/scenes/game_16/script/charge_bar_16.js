@@ -75,7 +75,7 @@ cc.Class({
                 this.launch();
                 setTimeout(() => {
                     com.mouse = 1;
-                }, 300);
+                }, 3000);
             }
         })
     },

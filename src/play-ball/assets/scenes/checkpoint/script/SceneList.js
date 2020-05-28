@@ -149,8 +149,8 @@ cc.Class({
             let item = cc.instantiate(this.ItemPrefab).getComponent('Select_Point_Item');
             //this.node.addChild(item.node);
             //item.parent = this.ScrollView;
-            ScrollView = this.ScrollView;
-            ScrollView.content.addChild(item.node);
+            //ScrollView = this.ScrollView;
+            this.ScrollView.content.addChild(item.node);
             //item.parent = ScrollView.content;
 
             //名字为game_01 最后的两个 即01
