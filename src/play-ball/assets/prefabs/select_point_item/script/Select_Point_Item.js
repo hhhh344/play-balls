@@ -22,12 +22,6 @@ cc.Class({
 
     LoadExample () {
         if (this.url) {
-            if(this.name.startsWith('game_z')){
-                  console.log(this.name);
-                  cc.view.setOrientation(cc.macro.ORIENTATION_LANDSCAPE);
-             }else{
-                   cc.view.setOrientation(cc.macro.ORIENTATION_PORTRAIT);
-            }
             cc.director.loadScene(this.url);
         }
     },

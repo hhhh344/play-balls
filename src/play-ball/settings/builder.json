@@ -1,7 +1,7 @@
 {
   "title": "play-ball",
   "packageName": "org.cocos2d.demo",
-  "startScene": "d801271a-3fa0-4ebc-95b9-5f30f8c38e2e",
+  "startScene": "f043ff30-af1a-4c12-96b0-89c50bc1d81a",
   "excludeScenes": [],
   "includeSDKBox": false,
   "orientation": {

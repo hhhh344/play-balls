@@ -7,12 +7,12 @@ cc.Class({
         //幕布开合时间
         duration : 0.5,
 
-        top_Curtain: {
+        top_Curtain_red: {
             default: null,
             type: cc.Node
         },
 
-        bottom_Curtain: {
+        bottom_Curtain_red: {
             default: null,
             type: cc.Node
         },
@@ -50,6 +50,8 @@ cc.Class({
         }
         //小球碰到陷阱后， 判定为失败，并且撤销陷阱的碰撞监听
         if(otherCollider.node._name == this.ball._name) {
+            this.top_Curtain_red.active=true;
+            this.bottom_Curtain_red.active=true;
             this.close_the_door();
             console.log('fail');
             com.result=-1;
@@ -62,10 +64,10 @@ cc.Class({
 
     close_the_door:function(){
 
-        cc.tween(this.top_Curtain)
+        cc.tween(this.top_Curtain_red)
         .to(this.duration, { position: cc.v2(0, 250) })
         .start()
-        cc.tween(this.bottom_Curtain)
+        cc.tween(this.bottom_Curtain_red)
         .to(this.duration, { position: cc.v2(0, -250) })
         .start()
         this.scheduleOnce(function() {

@@ -43,7 +43,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 700,
-      "height": 1000
+      "height": 750
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -54,8 +54,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        329.216,
-        -197.918,
+        328.585,
+        -208.276,
         0,
         0,
         0,
@@ -128,29 +128,39 @@
     "points": [
       {
         "__type__": "cc.Vec2",
-        "x": 330,
-        "y": 160
+        "x": 218.4,
+        "y": 110.4
       },
       {
         "__type__": "cc.Vec2",
-        "x": 370,
-        "y": 160
+        "x": 345.2,
+        "y": 110.4
       },
       {
         "__type__": "cc.Vec2",
-        "x": 370,
-        "y": 1000
+        "x": 287.6,
+        "y": 160.2
       },
       {
         "__type__": "cc.Vec2",
-        "x": 330,
-        "y": 1000
+        "x": 283.6,
+        "y": 736.9
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 260.2,
+        "y": 736.9
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 250.6,
+        "y": 153.4
       }
     ],
     "_id": ""
   },
   {
-    "__type__": "c8048EY8kNN7YfgJXiDwr+Y",
+    "__type__": "20e5dt4BxtKy4l/jSLlvLn/",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -160,7 +170,7 @@
     "circle_transition": null,
     "circle_red": null,
     "ball": null,
-    "nextSceneName": "game_15",
+    "nextSceneName": "game_z_15",
     "otherBallScript": "sticky_ball",
     "collideAudio": {
       "__uuid__": "121362f2-9ead-4553-be72-1c33f1ba2315"
@@ -173,9 +183,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "c59e93c4-d9be-4847-a904-ed5f172b7972"
+      "__id__": 0
     },
-    "fileId": "c3XHsSSWFHToNrmEH2H7B1",
+    "fileId": "06VljBk8tIA62eHY3cS6/x",
     "sync": false
   }
 ]
