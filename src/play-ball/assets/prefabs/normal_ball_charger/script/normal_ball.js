@@ -41,7 +41,7 @@ cc.Class({
         //碰到心或者陷阱 撤销小球的碰撞监听 防止多次碰撞 音效炸裂
         if(otherCollider.node._name == 'heart' || otherCollider.node._name == 'trap') {
             this.rigidBody.enabledContactListener = false;
-            this.rigidBody.linearVelocity = cc.Vec2.ZERO;
+            //this.rigidBody.linearVelocity = cc.Vec2.ZERO;
             return;
         }
         if(com.data === 1) {

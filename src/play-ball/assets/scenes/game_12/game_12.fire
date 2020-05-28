@@ -189,7 +189,7 @@
       "array": [
         0,
         0,
-        489.9850476171653,
+        452.0549577989116,
         0,
         0,
         0,
@@ -1365,7 +1365,7 @@
     "ball": {
       "__id__": 51
     },
-    "nextSceneName": "game_12",
+    "nextSceneName": "game_13",
     "collideAudio": {
       "__uuid__": "121362f2-9ead-4553-be72-1c33f1ba2315"
     },
