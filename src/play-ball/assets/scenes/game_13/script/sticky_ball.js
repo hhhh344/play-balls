@@ -30,10 +30,12 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        cc.director.getCollisionManager().enable = true;
-        cc.director.getPhysicsManager().enabled = true;
-        this.rigidBody = this.node.getComponent(cc.RigidBody);
-        //manager.enabledDebugDraw = true;
+         var manager = cc.director.getCollisionManager();
+                var physicsManager = cc.director.getPhysicsManager();
+                manager.enabled = true;
+                physicsManager.enabled = true;
+                physicsManager.gravity = cc.v2(-300, 0);
+                this.rigidBody = this.node.getComponent(cc.RigidBody);
     },
 
     //碰撞回调
