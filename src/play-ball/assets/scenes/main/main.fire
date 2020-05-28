@@ -189,7 +189,7 @@
       "array": [
         0,
         0,
-        215.64032554232523,
+        214.20597096730725,
         0,
         0,
         0,
@@ -1294,6 +1294,7 @@
     },
     "_enabled": true,
     "ItemPrefab": null,
+    "ScrollView": null,
     "InitItemCount": 0,
     "_id": "26ZMRVcZRLc7hadbvmhGZJ"
   }
