@@ -192,7 +192,7 @@
       "array": [
         0,
         0,
-        457.7577174945635,
+        489.9850476171653,
         0,
         0,
         0,
@@ -6562,7 +6562,7 @@
       "__id__": 131
     },
     "currentSceneName": "game_08",
-    "homeSceneName": "main",
+    "homeSceneName": "checkpoint",
     "_id": "b7MScRgW9CK6eWzcyywHXa"
   },
   {

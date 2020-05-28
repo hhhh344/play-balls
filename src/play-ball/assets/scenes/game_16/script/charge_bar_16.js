@@ -61,7 +61,7 @@ cc.Class({
         });
 
         this.Canvas.on(cc.Node.EventType.TOUCH_MOVE, e => {
-            if(com.mouse === 1) {
+            if(com.mouse === 1 && this.border.opacity === 255) {
                 this.calculateChargeBar(e);
                 this.chargeBarChange();
             }
@@ -69,9 +69,13 @@ cc.Class({
 
         this.Canvas.on(cc.Node.EventType.TOUCH_END, e => {
             if(com.mouse === 1) {
+                com.mouse = 0;
                 this.ballRigidBody.gravityScale = 1;
                 this.border.opacity = 0;
                 this.launch();
+                setTimeout(() => {
+                    com.mouse = 1;
+                }, 300);
             }
         })
     },
