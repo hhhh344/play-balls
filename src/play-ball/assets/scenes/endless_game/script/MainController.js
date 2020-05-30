@@ -198,13 +198,15 @@ var MainController = cc.Class({
         while (currentPosX < endPosX) {
             //随机选择一个障碍物
             let barrier = cc.instantiate(this.prefabBarriers[Math.floor(Math.random() * this.prefabBarriers.length)]).getComponent(Barrier);
-            
+           
             if(barrier.name.startsWith('addBall')){
                 let rand = this.randomNum(0,7);
-                console.log(rand);
+                //console.log(rand);
                 if(rand != 0){
                     continue;
                 }
+            }else{
+               
             }
             //设定障碍物的位置
             barrier.node.parent = this.node;

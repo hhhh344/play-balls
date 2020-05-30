@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "ploygon5",
+    "_name": "ploygon10",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -188,9 +188,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "3ff866b4-6c45-44dd-8abe-d45762ce9ce0"
+      "__uuid__": "c89a6456-66e2-4df0-b299-0a52e5c1f46c"
     },
-    "fileId": "5cGS1uhp1D+JA0slDksjI+",
+    "fileId": "b9YVdsm8dD+pSxb6sU87vM",
     "sync": false
   },
   {
@@ -209,7 +209,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "9b4c84cd-4f81-4eb5-8a0f-a175697f9f31"
+      "__uuid__": "269604b9-a2c0-4878-8b8d-5b407bbbbb6a"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -373,9 +373,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "3ff866b4-6c45-44dd-8abe-d45762ce9ce0"
+      "__uuid__": "c89a6456-66e2-4df0-b299-0a52e5c1f46c"
     },
-    "fileId": "13bO9OgipP+4fdTtH5hhiA",
+    "fileId": "b97P4cj3NGZbtpyqZsqcf8",
     "sync": false
   }
 ]
