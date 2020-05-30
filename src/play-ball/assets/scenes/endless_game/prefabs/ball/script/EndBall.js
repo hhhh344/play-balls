@@ -68,7 +68,7 @@ var EndBall = cc.Class({
                 }.bind(this))
             ))
             this.node.group = Config.groupBallInGame;
-            console.log(this.node.group);
+            //console.log(this.node.group);
             this.isTouchedGround = false;
         }
 
