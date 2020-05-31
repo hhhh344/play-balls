@@ -79,6 +79,26 @@ var MainController = cc.Class({
         this.init();
         this.guideShow();
         this.addBarriers();
+        this.test();
+    },
+
+    test(){
+        
+            // 初始化方法，从配置中读取参数
+            this.app = cc.cloud && cc.cloud.initialize();
+            let auth = this.app.auth();
+            auth.signInAnonymously();
+        
+            // this.app = cc.cloud && cc.cloud.initialize();
+            // let auth = this.app.auth();
+             var db = this.app.database();
+             db.collection("test").add({
+               test_id:1,
+               test_name:"mzq"
+             })
+             .then(res => {
+               console.log(res);
+             });
     },
 
     init(){

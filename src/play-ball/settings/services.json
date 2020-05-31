@@ -1,6 +1,23 @@
 {
 	"game": {
-		"name": "未知游戏",
-		"appid": "UNKNOW"
-	}
+		"name": "play-ball",
+		"appid": "608539843",
+		"cid": "0"
+	},
+	"configs": [
+		{
+			"appid": "608539843",
+			"services": [
+				{
+					"service_id": "272",
+					"enable": true,
+					"params": {
+						"env_id": "cocos-play-ball-2a61c",
+						"plugin_version": "0.6.2_1.6.1"
+					}
+				}
+			]
+		}
+	],
+	"needExecNative": true
 }
