@@ -79,26 +79,38 @@ var MainController = cc.Class({
         this.init();
         this.guideShow();
         this.addBarriers();
-        this.test();
     },
 
     test(){
+        /*
+        this.app = cc.cloud && cc.cloud.initialize();
+
+        let auth = this.app.auth();  
+
+        // 1. 建议登录前先判断当前是否已经登录
+        const loginState = await auth.getLoginState(); 
+        console.log(loginState);
         
-            // 初始化方法，从配置中读取参数
-            this.app = cc.cloud && cc.cloud.initialize();
-            let auth = this.app.auth();
-            auth.signInAnonymously();
+        auth.weixinAuthProvider({
+            appid: "wxb41b78fb4dede4e2",
+            scope: "snsapi_base"
+        }).signIn();
         
-            // this.app = cc.cloud && cc.cloud.initialize();
-            // let auth = this.app.auth();
-             var db = this.app.database();
-             db.collection("test").add({
-               test_id:1,
-               test_name:"mzq"
-             })
-             .then(res => {
-               console.log(res);
-             });
+        
+        const userInfo =  auth.getUserInfo();
+        const {
+            openid,
+            nickname,
+            sex,
+            province,
+            country,
+            headimgurl,
+            privilege,
+            unionid,
+       } = userInfo
+       //console.log('xx');
+       console.log(userInfo);*/
+            
     },
 
     init(){
@@ -220,13 +232,11 @@ var MainController = cc.Class({
             let barrier = cc.instantiate(this.prefabBarriers[Math.floor(Math.random() * this.prefabBarriers.length)]).getComponent(Barrier);
            
             if(barrier.name.startsWith('addBall')){
-                let rand = this.randomNum(0,7);
+                let rand = this.randomNum(0,5);
                 //console.log(rand);
                 if(rand != 0){
                     continue;
                 }
-            }else{
-               
             }
             //设定障碍物的位置
             barrier.node.parent = this.node;

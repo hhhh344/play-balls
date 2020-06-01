@@ -1,8 +1,8 @@
 
 Resources:
-  cocos-play-ball-2a61c:
+  cocos-play-balls-env-4d225:
     Type: TencentCloud::Serverless::Namespace
-    function:
+    EndLess:
       Properties:
         CodeUri: .
         Description: ''

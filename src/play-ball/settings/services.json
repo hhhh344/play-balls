@@ -1,8 +1,8 @@
 {
 	"game": {
-		"name": "play-ball",
-		"appid": "608539843",
-		"cid": "0"
+		"name": "play-balls",
+		"appid": "609090081",
+		"cid": "13826"
 	},
 	"configs": [
 		{
@@ -13,6 +13,19 @@
 					"enable": true,
 					"params": {
 						"env_id": "cocos-play-ball-2a61c",
+						"plugin_version": "0.6.2_1.6.1"
+					}
+				}
+			]
+		},
+		{
+			"appid": "609090081",
+			"services": [
+				{
+					"service_id": "272",
+					"enable": true,
+					"params": {
+						"env_id": "cocos-play-balls-env-4d225",
 						"plugin_version": "0.6.2_1.6.1"
 					}
 				}

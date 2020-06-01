@@ -171,6 +171,7 @@
     "_enabled": true,
     "lbScore": null,
     "isAddBuffBall": false,
+    "contact": false,
     "_id": ""
   },
   {
