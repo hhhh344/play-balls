@@ -69,7 +69,9 @@ var MainController = cc.Class({
         cc.director.getPhysicsManager().enabled = true;
 
         //设置重力
-        cc.director.getActionManager().gravity = cc.v2(0, -1000); 
+        // cc.director.getActionManager().gravity = cc.v2(0, -1000); 
+        var physicsManager = cc.director.getPhysicsManager();
+        physicsManager.gravity = cc.v2(0, -300);
         
          //事件监听
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
