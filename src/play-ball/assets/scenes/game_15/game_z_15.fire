@@ -4951,7 +4951,7 @@
     "ball": {
       "__id__": 43
     },
-    "nextSceneName": "game_z_15",
+    "nextSceneName": "game_z_16",
     "otherBallScript": "sticky_ball",
     "collideAudio": {
       "__uuid__": "121362f2-9ead-4553-be72-1c33f1ba2315"
