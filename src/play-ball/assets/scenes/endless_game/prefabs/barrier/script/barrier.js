@@ -11,23 +11,23 @@ var Barrier = cc.Class({
     },
     //start
     start() {
-        let sc = this.main.setBarrierScore();
-        this.setScore(sc);
-
-        let r = this.node.color.r - sc * 5;
-        let g = this.node.color.g - sc;
-        let b = this.node.color.b - sc * 5;
-
-        if(r <= 180){
-            r = 180;
+        if(!this.name.startsWith('addBall')){
+            let sc = this.main.setBarrierScore();
+            this.setScore(sc);
+            
+            let r = 120 - sc * 10;
+            let g = 224 - sc * 10 ;
+            let b = this.node.color.b;
+            
+            if(r <= 7){
+                r = 7;
+            }
+            if(g <= 140){
+                g = 140;
+            }
+           this.node.color = cc.color(r, g, b, 255);
         }
-        if(g <= 180){
-            g = 180;
-        }
-        if(b <= 180){
-            b = 180;
-        }
-        this.node.color = cc.color(r, g, b, 255);
+       this.node.zIndex = 9;
 
     },
     //获取随机值
@@ -56,29 +56,23 @@ var Barrier = cc.Class({
 
     //发生碰撞时
     onBeginContact(contact, selfCollider, otherCollider) {
-        
-        //console.log(this.node.color);
-        let r = this.node.color.r + 20;
-        let g = this.node.color.g + 20;
-        let b = this.node.color.b + 20;
-
-        if(r >= 255){
-            r = 255;
-        }
-        if(g >= 255){
-            g = 255;
-        }
-        if(b >= 255){
-            b = 255;
-        }
-       
-        this.node.color = cc.color(r, g, b, 255);
-      
         //console.log(this.node.color);
         if (this.name.startsWith('addBall')) {
             this.main.addBall(this.node.position);
             this.main.removeBarrier(this);
         } else {
+            let r = this.node.color.r + 10;
+            let g = this.node.color.g + 10;
+            let b = this.node.color.b;
+    
+            if(r >= 120){
+                r = 120;
+            }
+            if(g >= 224){
+                g = 224;
+            }
+           
+            this.node.color = cc.color(r, g, b, 255);
             //this.main.addScore();
             if (this.score == 1) {
                 this.main.removeBarrier(this);

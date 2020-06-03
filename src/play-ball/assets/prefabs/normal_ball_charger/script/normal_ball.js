@@ -33,6 +33,7 @@ cc.Class({
         cc.director.getCollisionManager().enable = true;
         cc.director.getPhysicsManager().enabled = true;
         this.rigidBody = this.node.getComponent(cc.RigidBody);
+        cc.director.getPhysicsManager().gravity = cc.v2(0, -300);
         //manager.enabledDebugDraw = true;
     },
 

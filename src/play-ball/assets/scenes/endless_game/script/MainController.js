@@ -81,6 +81,38 @@ var MainController = cc.Class({
         this.addBarriers();
     },
 
+    test(){
+        /*
+        this.app = cc.cloud && cc.cloud.initialize();
+
+        let auth = this.app.auth();  
+
+        // 1. 建议登录前先判断当前是否已经登录
+        const loginState = await auth.getLoginState(); 
+        console.log(loginState);
+        
+        auth.weixinAuthProvider({
+            appid: "wxb41b78fb4dede4e2",
+            scope: "snsapi_base"
+        }).signIn();
+        
+        
+        const userInfo =  auth.getUserInfo();
+        const {
+            openid,
+            nickname,
+            sex,
+            province,
+            country,
+            headimgurl,
+            privilege,
+            unionid,
+       } = userInfo
+       //console.log('xx');
+       console.log(userInfo);*/
+            
+    },
+
     init(){
         //计分牌
         this.score = 0; 
@@ -200,13 +232,11 @@ var MainController = cc.Class({
             let barrier = cc.instantiate(this.prefabBarriers[Math.floor(Math.random() * this.prefabBarriers.length)]).getComponent(Barrier);
            
             if(barrier.name.startsWith('addBall')){
-                let rand = this.randomNum(0,7);
+                let rand = this.randomNum(0,3);
                 //console.log(rand);
                 if(rand != 0){
                     continue;
                 }
-            }else{
-               
             }
             //设定障碍物的位置
             barrier.node.parent = this.node;
