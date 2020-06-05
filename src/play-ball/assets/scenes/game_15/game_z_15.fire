@@ -2614,7 +2614,7 @@
       "__id__": 43
     },
     "_enabled": true,
-    "maxSpeed": 12,
+    "maxSpeed": 10,
     "minSpeed": 2,
     "collideAudio": {
       "__uuid__": "2cced9e2-1369-4084-a1d1-7b5915fa0dd9"
@@ -6002,7 +6002,7 @@
       "ctor": "Float64Array",
       "array": [
         267.5,
-        437.5,
+        -437.5,
         0,
         0,
         0,
@@ -6068,11 +6068,11 @@
     "_enabled": true,
     "alignMode": 1,
     "_target": null,
-    "_alignFlags": 33,
+    "_alignFlags": 36,
     "_left": 30,
     "_right": 30,
     "_top": 20,
-    "_bottom": 0,
+    "_bottom": 20,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
