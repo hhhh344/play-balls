@@ -192,7 +192,7 @@
       "array": [
         0,
         0,
-        273.05782567063227,
+        342.2532501472093,
         0,
         0,
         0,
@@ -1282,7 +1282,7 @@
       "ctor": "Float64Array",
       "array": [
         5,
-        0,
+        50,
         0,
         0,
         0,
@@ -1348,7 +1348,7 @@
     "_enabled": true,
     "_type": 2,
     "_allowSleep": true,
-    "_gravityScale": 1,
+    "_gravityScale": 0.9,
     "_linearDamping": 0,
     "_angularDamping": 0,
     "_linearVelocity": {
@@ -2543,7 +2543,7 @@
   {
     "__type__": "cc.Node",
     "_name": "top_Curtain_red",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 45
     },
@@ -2607,7 +2607,7 @@
   {
     "__type__": "cc.Node",
     "_name": "Curtain",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 2
     },
@@ -2680,7 +2680,7 @@
   {
     "__type__": "cc.Node",
     "_name": "top_Curtain",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 45
     },
@@ -2787,7 +2787,7 @@
   {
     "__type__": "cc.Node",
     "_name": "bottom_Curtain",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 45
     },
@@ -2894,7 +2894,7 @@
   {
     "__type__": "cc.Node",
     "_name": "bottom_Curtain_red",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 45
     },
@@ -5485,7 +5485,7 @@
       "__id__": 87
     },
     "currentSceneName": "game_03",
-    "homeSceneName": "main",
+    "homeSceneName": "checkpoint",
     "_id": "90jZm/SoFEy6V0IxXOdAre"
   },
   {

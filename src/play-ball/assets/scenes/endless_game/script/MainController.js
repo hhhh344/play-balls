@@ -68,7 +68,10 @@ var MainController = cc.Class({
         //启用物理世界
         cc.director.getPhysicsManager().enabled = true;
 
-        cc.director.getActionManager().gravity = cc.v2(0, -1000); //设置重力
+        //设置重力
+        // cc.director.getActionManager().gravity = cc.v2(0, -1000); 
+        var physicsManager = cc.director.getPhysicsManager();
+        physicsManager.gravity = cc.v2(0, -300);
         
          //事件监听
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
@@ -78,6 +81,38 @@ var MainController = cc.Class({
         this.init();
         this.guideShow();
         this.addBarriers();
+    },
+
+    test(){
+        /*
+        this.app = cc.cloud && cc.cloud.initialize();
+
+        let auth = this.app.auth();  
+
+        // 1. 建议登录前先判断当前是否已经登录
+        const loginState = await auth.getLoginState(); 
+        console.log(loginState);
+        
+        auth.weixinAuthProvider({
+            appid: "wxb41b78fb4dede4e2",
+            scope: "snsapi_base"
+        }).signIn();
+        
+        
+        const userInfo =  auth.getUserInfo();
+        const {
+            openid,
+            nickname,
+            sex,
+            province,
+            country,
+            headimgurl,
+            privilege,
+            unionid,
+       } = userInfo
+       //console.log('xx');
+       console.log(userInfo);*/
+            
     },
 
     init(){
@@ -197,10 +232,10 @@ var MainController = cc.Class({
         while (currentPosX < endPosX) {
             //随机选择一个障碍物
             let barrier = cc.instantiate(this.prefabBarriers[Math.floor(Math.random() * this.prefabBarriers.length)]).getComponent(Barrier);
-            
+           
             if(barrier.name.startsWith('addBall')){
-                let rand = this.randomNum(0,7);
-                console.log(rand);
+                let rand = this.randomNum(0,3);
+                //console.log(rand);
                 if(rand != 0){
                     continue;
                 }

@@ -16,11 +16,9 @@ cc.Class({
 
         currentSceneName: {
             default: 'game_01',
-        },
-      
-        homeSceneName: {
-            default: 'main',
-        },
+        },  
+
+        homeSceneName: 'checkpoint',
     },
 
     onLoad () {

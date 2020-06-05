@@ -2386,7 +2386,7 @@
       "__id__": 42
     },
     "_enabled": true,
-    "maxSpeed": 8,
+    "maxSpeed": 12,
     "minSpeed": 2,
     "collideAudio": {
       "__uuid__": "2cced9e2-1369-4084-a1d1-7b5915fa0dd9"
@@ -4921,8 +4921,8 @@
     "menu": {
       "__id__": 100
     },
-    "currentSceneName": "game_01",
-    "homeSceneName": "main",
+    "currentSceneName": "game_z_14",
+    "homeSceneName": "checkpoint",
     "_id": "21rhbc0wNMtpVJaCNyABQR"
   },
   {

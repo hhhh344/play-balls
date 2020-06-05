@@ -17,6 +17,11 @@ cc.Class({
             type: cc.Prefab
         },
 
+        ScrollView:{
+            default:null,
+            type: cc.ScrollView
+        },
+
         //初始化一个页面展示按钮的数量
         InitItemCount: 0,
     
@@ -142,7 +147,11 @@ cc.Class({
         
             //生成一个新的item
             let item = cc.instantiate(this.ItemPrefab).getComponent('Select_Point_Item');
-            this.node.addChild(item.node);
+            //this.node.addChild(item.node);
+            //item.parent = this.ScrollView;
+            //ScrollView = this.ScrollView;
+            this.ScrollView.content.addChild(item.node);
+            //item.parent = ScrollView.content;
 
             //名字为game_01 最后的两个 即01
             item.UpdateItem (x, y, ItemInfo.name, ItemInfo.url);

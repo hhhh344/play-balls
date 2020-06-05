@@ -42,9 +42,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 249,
-      "g": 235,
-      "b": 235,
+      "r": 56,
+      "g": 173,
+      "b": 169,
       "a": 255
     },
     "_contentSize": {
@@ -209,7 +209,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "c415c999-7057-4e5f-8191-f07c7c9dcaba"
+      "__uuid__": "5ff640cd-97f5-4820-b90f-dd6ac01d0265"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -237,6 +237,7 @@
       "__id__": 3
     },
     "isAddBuffBall": false,
+    "contact": false,
     "_id": ""
   },
   {

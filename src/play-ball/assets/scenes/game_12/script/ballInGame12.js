@@ -39,7 +39,6 @@ cc.Class({
     //碰撞回调
     onBeginContact: function(contact, selfCollider, otherCollider) {
         if(otherCollider.name == 'heart<PhysicsChainCollider>') {
-            console.log('123321');
             this.node.getComponent(cc.RigidBody).enabledContactListener = false;
             return;
         }

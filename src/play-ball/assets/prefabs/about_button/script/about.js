@@ -30,6 +30,10 @@ cc.Class({
 
     // onLoad () {},
 
+    LoadAbout () {
+        cc.director.loadScene('about');
+    },
+
     start () {
 
     },

@@ -2614,7 +2614,7 @@
       "__id__": 43
     },
     "_enabled": true,
-    "maxSpeed": 8,
+    "maxSpeed": 12,
     "minSpeed": 2,
     "collideAudio": {
       "__uuid__": "2cced9e2-1369-4084-a1d1-7b5915fa0dd9"
@@ -4951,7 +4951,7 @@
     "ball": {
       "__id__": 43
     },
-    "nextSceneName": "game_z_15",
+    "nextSceneName": "game_z_16",
     "otherBallScript": "sticky_ball",
     "collideAudio": {
       "__uuid__": "121362f2-9ead-4553-be72-1c33f1ba2315"
@@ -6205,8 +6205,8 @@
     "menu": {
       "__id__": 131
     },
-    "currentSceneName": "game_01",
-    "homeSceneName": "main",
+    "currentSceneName": "game_z_15",
+    "homeSceneName": "checkpoint",
     "_id": "c0bWAZdMpI6qwv/PHe9VaZ"
   },
   {

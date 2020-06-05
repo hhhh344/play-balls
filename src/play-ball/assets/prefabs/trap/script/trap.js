@@ -44,12 +44,11 @@ cc.Class({
     },
 
     onBeginContact: function(contact, selfCollider, otherCollider) {
-        //陷阱被碰撞时 播放音效
-        if(com.data == 1) {
-            cc.audioEngine.playEffect(this.collideAudio);
-        }
         //小球碰到陷阱后， 判定为失败，并且撤销陷阱的碰撞监听
         if(otherCollider.node._name == this.ball._name) {
+            if(com.data == 1) {
+                cc.audioEngine.playEffect(this.collideAudio);
+            }
             this.top_Curtain_red.active=true;
             this.bottom_Curtain_red.active=true;
             this.close_the_door();
