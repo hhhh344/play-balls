@@ -2768,7 +2768,7 @@
       "__id__": 51
     },
     "_enabled": true,
-    "maxSpeed": 10,
+    "maxSpeed": 8,
     "minSpeed": 2,
     "collideAudio": {
       "__uuid__": "2cced9e2-1369-4084-a1d1-7b5915fa0dd9"

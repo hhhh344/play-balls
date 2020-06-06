@@ -24,7 +24,17 @@ cc.Class({
         Canvas: {
             type: cc.Node,
             default: null,
-        }
+        },
+
+        //小球可以再次发射的冷却时间
+        cd: 2,
+
+        //冷却时间条
+        cd_Label: {
+            type: cc.Label,
+            default: null,
+        },
+
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -77,9 +87,20 @@ cc.Class({
                 this.ballRigidBody.gravityScale = 1;
                 this.border.opacity = 0;
                 this.launch();
-                setTimeout(() => {
-                    this.canLaunch = 0;
-                }, 2000);
+                //冷却条
+                let temp = this.cd *10;
+                this.schedule(function() {
+                    if (temp == this.cd *10) {
+                        this.cd_Label.node.active = true;
+                    }
+                    this.cd_Label.string = '冷却时间：' + temp/10;
+                    if (temp == 0) {
+                        this.canLaunch = 0;
+                        this.cd_Label.node.active = false;
+                        temp = this.cd;
+                    }
+                    temp -= 1;
+                }, 0.1, this.cd*10, 0);
             }
         })
     },
